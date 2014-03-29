@@ -1,9 +1,45 @@
+body,html{
+	background: black;
+	margin: 0;
+	padding: 0;
+	color:#44f;
+}
+
+*,*:before,*:after{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+$panelSize: 300px;
+$margin: 10px;
+#map{
+	border: 1px solid green;
+	position: absolute;
+	top: $margin;
+	left: $margin;
+	right: $panelSize + $margin;
+	bottom: $margin;
+}
+
+#panel{
+	border: 1px solid blue;
+	//background: #1a8e8c;
+	position: absolute;
+	right: $margin;
+	top: $margin;
+	bottom: $margin;
+	width: $panelSize;
+}
+
 .zone{
   $size: 50px;
-  background:red;
+  background:#77f;
   width:$size;
   height:$size;
   position:absolute;
   margin-left:-$size/2;
   margin-top:-$size/2;
+  border-radius:$size;
+  box-shadow: 0 0 3px red inset; 
 }

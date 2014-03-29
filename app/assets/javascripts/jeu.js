@@ -17,7 +17,3 @@ window.Jeu = {
 $(document).ready(function(){
   Jeu.initialize();
 });
-
-//<% _.each(zones, function(zone) { %>
-//<%= renderZone({x: zone.get("x"), y: zone.get("y")}) %>
-//<% } %>
