@@ -4,12 +4,13 @@ window.Jeu = {
   Views: {},
   Routers: {},
   initialize: function() {
-    jQuery(document).on('ready',function(){
-      this.region = new this.Models.Region();
-      this.region.set({zones: new this.Collections.Zones()});
-      this.region.get("zones").fetch();
-      this.region.get("zones").each(function(zone){zone.draw()});
-      
+  console.log('toto');
+    this.region = new this.Models.Region();
+    this.region.set({zones: new this.Collections.Zones()});
+    this.region.get("zones").fetch({
+      success:function(){
+        Jeu.region.get("zones").each(function(zone){zone.draw()});
+      }
     });
   }
 };
