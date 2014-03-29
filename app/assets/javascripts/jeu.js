@@ -8,7 +8,7 @@ window.Jeu = {
     this.region.set({zones: new this.Collections.Zones()});
     this.region.get("zones").fetch({
       success:function(){
-        Jeu.region.get("zones").each(function(zone){zone.set({view: new Jeu.Views.ZonesIndex({el: $("#map"), model:zone})});zone.get("view").render()});
+        Jeu.region.get("zones").each(function(zone){zone.set({view: new Jeu.Views.ZonesIndex({el: $("#map").append("<div>"), model:zone})});zone.get("view").render()});
       }
     });
   }
