@@ -1,0 +1,9 @@
+.zone{
+  $size: 50px;
+  background:red;
+  width:$size;
+  height:$size;
+  position:absolute;
+  margin-left:-$size/2;
+  margin-top:-$size/2;
+}
