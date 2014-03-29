@@ -2,12 +2,12 @@
 
 <p>
   <b>Region:</b>
-  <%= @zone.region %>
+  <%= @zone.region.name %>
 </p>
 
 <p>
   <b>Buildingtype:</b>
-  <%= @zone.buildingType %>
+  <%= @zone.buildingType.name unless @zone.buildingType.nil? %>
 </p>
 
 <p>
