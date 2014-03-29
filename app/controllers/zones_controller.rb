@@ -2,8 +2,10 @@ class ZonesController < ApplicationController
   # GET /zones
   # GET /zones.json
   def index
-    @zones = Zone.all
-
+    @zones = Zone.where(:region_id => params[:region_id])
+    if params[:region_id].nil?
+      @zones = Zone.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @zones }
