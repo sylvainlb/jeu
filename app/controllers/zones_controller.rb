@@ -42,11 +42,13 @@ class ZonesController < ApplicationController
   # POST /zones
   # POST /zones.json
   def create
-    @zone = Zone.new(params[:zone])
+    @region = Region.find(params[:region_id])
+    @zone = @region.zones.new(params[:zone])
+
 
     respond_to do |format|
       if @zone.save
-        format.html { redirect_to @zone, notice: 'Zone was successfully created.' }
+        format.html { redirect_to @region, notice: 'Zone was successfully created.' }
         format.json { render json: @zone, status: :created, location: @zone }
       else
         format.html { render action: "new" }

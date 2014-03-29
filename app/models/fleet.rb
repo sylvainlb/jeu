@@ -1,5 +1,5 @@
 class Fleet < ActiveRecord::Base
-  belongs_to :vehicleType
+  belongs_to :vehicle_type
   belongs_to :zone
-  attr_accessible :nbVehicule
+  attr_accessible :nb_vehicule
 end
