@@ -1,4 +1,7 @@
 Jeu::Application.routes.draw do
+
+  root :to => 'home#index'
+
   resources :fleets
   resources :zones
   resources :regions do
@@ -9,7 +12,7 @@ Jeu::Application.routes.draw do
   resources :stocks
   resources :vehicle_types
 
-  root :to => 'regions#index'
+
 
 
   # The priority is based upon order of creation:
