@@ -9,7 +9,9 @@ window.Jeu = {
     this.region.set({zones: new this.Collections.Zones()});
     this.region.get("zones").fetch({
       success:function(){
-        Jeu.region.get("zones").each(function(zone){zone.draw()});
+        Jeu.region.get("zones").each(function(zone){
+          zone.draw();
+        });
       }
     });
   }
@@ -18,7 +20,3 @@ window.Jeu = {
 $(document).ready(function(){
   Jeu.initialize();
 });
-
-//<% _.each(zones, function(zone) { %>
-//<%= renderZone({x: zone.get("x"), y: zone.get("y")}) %>
-//<% } %>
