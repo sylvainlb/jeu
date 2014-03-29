@@ -6,14 +6,4 @@ Jeu.Models.Zone = Backbone.Model.extend({
   },
   initialize: function(){
   },
-  draw: function(){
-    var div = $("<div>");
-    div.addClass('zone');
-    div.css({
-      top:  this.get('coordY'),
-      left: this.get('coordX')
-    });
-    $('body').append(div);
-    console.log(div);
-  }
 });
