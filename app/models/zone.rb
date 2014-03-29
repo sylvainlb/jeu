@@ -4,4 +4,5 @@ class Zone < ActiveRecord::Base
   has_many :stocks
   has_many :fleets
   attr_accessible :coordX, :coordY
+  attr_accessible :buildingType_id, :region_id
 end
