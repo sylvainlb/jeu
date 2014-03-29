@@ -8,5 +8,5 @@ window.Jeu = {
 };
 
 $(document).ready(function(){
-  Jeu.initialize();
+  //Jeu.initialize();
 });
