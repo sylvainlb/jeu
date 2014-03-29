@@ -1,4 +1,10 @@
 Jeu::Application.routes.draw do
+  resources :zones
+
+
+  resources :regions
+
+
   resources :resource_types
 
   root :to => 'resource-types#index'

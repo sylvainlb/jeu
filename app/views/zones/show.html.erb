@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Region:</b>
+  <%= @zone.region %>
+</p>
+
+<p>
+  <b>Buildingtype:</b>
+  <%= @zone.buildingType %>
+</p>
+
+<p>
+  <b>Coordx:</b>
+  <%= @zone.coordX %>
+</p>
+
+<p>
+  <b>Coordy:</b>
+  <%= @zone.coordY %>
+</p>
+
+
+<%= link_to 'Edit', edit_zone_path(@zone) %> |
+<%= link_to 'Back', zones_path %>

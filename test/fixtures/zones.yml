@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  region: 
+  buildingType: 
+  coordX: 1
+  coordY: 1
+
+two:
+  region: 
+  buildingType: 
+  coordX: 1
+  coordY: 1
