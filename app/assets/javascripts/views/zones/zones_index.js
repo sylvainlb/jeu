@@ -1,9 +1,15 @@
 Jeu.Views.ZonesIndex = Backbone.View.extend({
-  template: JST['zones/index'],
+  templates: {
+    icon: JST['zones/icon'],
+    menu: JST['zones/menu'],
+  },
+  
   events: {"click .zone" : "selectZone"},
-  selectZone: function(event) {console.log(this.model.id)},
+  selectZone: function(event) {
+    console.log(this.model.toJSON());
+    $("#panel").html(this.templates['menu'](this.model.toJSON()));
+  },
   render: function() {
-    alert();
-    this.$el.append($(this.template(this.model.toJSON())));
+    this.$el.append($(this.templates['icon'](this.model.toJSON())));
   }
 });
