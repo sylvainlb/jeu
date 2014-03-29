@@ -25,6 +25,7 @@ class BuildingTypesController < ApplicationController
   # GET /building_types/new.json
   def new
     @building_type = BuildingType.new
+    @resource_types = ResourceType.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,8 @@ class BuildingTypesController < ApplicationController
   # GET /building_types/1/edit
   def edit
     @building_type = BuildingType.find(params[:id])
+    @resource_types = ResourceType.all
+
   end
 
   # POST /building_types

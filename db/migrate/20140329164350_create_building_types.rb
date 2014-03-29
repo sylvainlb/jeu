@@ -3,7 +3,8 @@ class CreateBuildingTypes < ActiveRecord::Migration
     create_table :building_types do |t|
       t.float :output
       t.string :name
-      t.string :iconName
+      t.string :icon_name
+      t.references :resource_type
 
       t.timestamps
     end

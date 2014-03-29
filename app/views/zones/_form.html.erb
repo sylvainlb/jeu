@@ -16,8 +16,8 @@
     <%= f.text_field :region_id %>
   </div>
   <div class="field">
-    <%= f.label :buildingType_id %><br />
-    <%= f.text_field :buildingType_id %>
+    <%= f.label :building_type_id %><br />
+    <%= f.collection_select(:building_type_id, BuildingType.all, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :coordX %><br />

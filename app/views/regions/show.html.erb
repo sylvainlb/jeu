@@ -8,7 +8,7 @@
 <table>
   <tr>
     <th>Region id</th>
-    <th>Buildingtype id</th>
+    <th>Building type id</th>
     <th>Coordx</th>
     <th>Coordy</th>
     <th></th>
@@ -18,8 +18,7 @@
 
   <% @region.zones.each do |zone| %>
       <tr>
-        <td><%= zone.region %></td>
-        <td><%= zone.buildingType %></td>
+        <td><%= zone.building_type.name %></td>
         <td><%= zone.coordX %></td>
         <td><%= zone.coordY %></td>
         <td><%= link_to 'Show', zone %></td>
@@ -29,6 +28,24 @@
   <% end %>
 </table>
 
+<h2>Add a zone:</h2>
+<%= form_for([@region, @region.zones.build]) do |f| %>
+    <div class="field">
+      <%= f.label :building_type %><br />
+      <%= f.collection_select(:building_type_id, BuildingType.all, :id, :name) %>
+    </div>
+    <div class="field">
+      <%= f.label :coordX %><br />
+      <%= f.number_field :coordX %>
+    </div>
+    <div class="field">
+      <%= f.label :coordY %><br />
+      <%= f.number_field :coordY %>
+    </div>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
 
 
 <%= link_to 'Edit', edit_region_path(@region) %> |

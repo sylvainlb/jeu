@@ -1,0 +1,21 @@
+<h1>Listing vehicle_types</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vehicle_types.each do |vehicle_type| %>
+  <tr>
+    <td><%= link_to 'Show', vehicle_type %></td>
+    <td><%= link_to 'Edit', edit_vehicle_type_path(vehicle_type) %></td>
+    <td><%= link_to 'Destroy', vehicle_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vehicle type', new_vehicle_type_path %>

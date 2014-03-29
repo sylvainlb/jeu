@@ -1,4 +1,6 @@
 Jeu::Application.routes.draw do
+  resources :stocks
+
 
   root :to => 'home#index'
 
