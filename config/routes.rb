@@ -1,4 +1,9 @@
 Jeu::Application.routes.draw do
+  resources :resource_types
+
+  root :to => 'resource-types#index'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
