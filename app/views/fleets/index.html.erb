@@ -1,0 +1,27 @@
+<h1>Listing fleets</h1>
+
+<table>
+  <tr>
+    <th>Nbvehicule</th>
+    <th>Vehicletype</th>
+    <th>Zone</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @fleets.each do |fleet| %>
+  <tr>
+    <td><%= fleet.nbVehicule %></td>
+    <td><%= fleet.vehicleType %></td>
+    <td><%= fleet.zone %></td>
+    <td><%= link_to 'Show', fleet %></td>
+    <td><%= link_to 'Edit', edit_fleet_path(fleet) %></td>
+    <td><%= link_to 'Destroy', fleet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Fleet', new_fleet_path %>

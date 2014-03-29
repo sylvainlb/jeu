@@ -1,13 +1,13 @@
 Jeu::Application.routes.draw do
+  resources :fleets
   resources :zones
-
-
   resources :regions
-
-
   resources :resource_types
+  resources :building_types
+  resources :stocks
+  resources :vehicle_types
 
-  root :to => 'resource-types#index'
+  root :to => 'regions#index'
 
 
   # The priority is based upon order of creation:
