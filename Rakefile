@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Jeu2::Application.load_tasks
+Jeu::Application.load_tasks
