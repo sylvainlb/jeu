@@ -1,7 +1,9 @@
 Jeu::Application.routes.draw do
   resources :fleets
   resources :zones
-  resources :regions
+  resources :regions do
+    resources :zones
+  end
   resources :resource_types
   resources :building_types
   resources :stocks
