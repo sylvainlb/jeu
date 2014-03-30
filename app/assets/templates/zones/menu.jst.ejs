@@ -9,7 +9,7 @@
 <div>
   <h3>Flottes</h3>
   <ul><%_.each(fleets, function(fleet){%>
-    <li><%-fleet.get("nb_vehicle")%> véhicules</li>
+    <li><a href="#/fleets/<%-fleet.get("id")%>"><%-fleet.get("nb_vehicle")%> véhicules</a></li>
   <%})%></ul>
 </div>
 

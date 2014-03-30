@@ -4,7 +4,6 @@ window.Jeu = {
   Views: {},
   Routers: {},
   drawZones: function() {
-    console.log(this);
     new Jeu.Views.ZonesIndex({
       collection: Jeu.region.get("zones"), 
       el: $("#map")
@@ -26,6 +25,7 @@ window.Jeu = {
     });
     
     new this.Routers.Zones;
+    new this.Routers.Fleets;
     Backbone.history.start();
   }
 };

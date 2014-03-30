@@ -3,9 +3,9 @@ Jeu.Routers.Fleets = Backbone.Router.extend({
     "fleets/:fleet_id": "selectFleet"
   },
   selectFleet: function(fleet_id) {
-    new Jeu.Views.ZonesIndex({
-      collection: Jeu.region.get("zones"), 
+    new Jeu.Views.FleetsIndex({
+      collection: Jeu.region.get("fleets"), 
       el: $("#map")
-    }).selectZone(fleet_id);
+    }).selectFleet(fleet_id);
   },
 });
