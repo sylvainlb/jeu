@@ -1,0 +1,31 @@
+<h1>Listing transport_routes</h1>
+
+<table>
+  <tr>
+    <th>Origin</th>
+    <th>Destination</th>
+    <th>Fleet</th>
+    <th>Resource type</th>
+    <th>Quantity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @transport_routes.each do |transport_route| %>
+  <tr>
+    <td><%= transport_route.origin %></td>
+    <td><%= transport_route.destination %></td>
+    <td><%= transport_route.fleet %></td>
+    <td><%= transport_route.resource_type %></td>
+    <td><%= transport_route.quantity %></td>
+    <td><%= link_to 'Show', transport_route %></td>
+    <td><%= link_to 'Edit', edit_transport_route_path(transport_route) %></td>
+    <td><%= link_to 'Destroy', transport_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Transport route', new_transport_route_path %>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Origin:</b>
+  <%= @transport_route.origin %>
+</p>
+
+<p>
+  <b>Destination:</b>
+  <%= @transport_route.destination %>
+</p>
+
+<p>
+  <b>Fleet:</b>
+  <%= @transport_route.fleet %>
+</p>
+
+<p>
+  <b>Resource type:</b>
+  <%= @transport_route.resource_type %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @transport_route.quantity %>
+</p>
+
+
+<%= link_to 'Edit', edit_transport_route_path(@transport_route) %> |
+<%= link_to 'Back', transport_routes_path %>

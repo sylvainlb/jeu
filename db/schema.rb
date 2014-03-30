@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140329181530) do
+ActiveRecord::Schema.define(:version => 20140330013917) do
 
   create_table "building_types", :force => true do |t|
     t.float    "output"
@@ -23,13 +23,15 @@ ActiveRecord::Schema.define(:version => 20140329181530) do
   end
 
   create_table "fleets", :force => true do |t|
-    t.integer  "nb_vehicule"
+    t.integer  "nb_vehicle"
     t.integer  "vehicle_type_id"
     t.integer  "zone_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "current_route_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
+  add_index "fleets", ["current_route_id"], :name => "index_fleets_on_current_route_id"
   add_index "fleets", ["vehicle_type_id"], :name => "index_fleets_on_vehicle_type_id"
   add_index "fleets", ["zone_id"], :name => "index_fleets_on_zone_id"
 
@@ -55,9 +57,25 @@ ActiveRecord::Schema.define(:version => 20140329181530) do
 
   add_index "stocks", ["zone_id"], :name => "index_stocks_on_zone_id"
 
+  create_table "transport_routes", :force => true do |t|
+    t.integer  "origin_id"
+    t.integer  "destination_id"
+    t.integer  "fleet_id"
+    t.integer  "resource_type_id"
+    t.integer  "quantity"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "transport_routes", ["destination_id"], :name => "index_transport_routes_on_destination_id"
+  add_index "transport_routes", ["fleet_id"], :name => "index_transport_routes_on_fleet_id"
+  add_index "transport_routes", ["origin_id"], :name => "index_transport_routes_on_origin_id"
+  add_index "transport_routes", ["resource_type_id"], :name => "index_transport_routes_on_resource_type_id"
+
   create_table "vehicle_types", :force => true do |t|
     t.integer  "capacity"
     t.float    "speed"
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  origin: 
+  destination: 
+  start: 2014-03-30 03:39:17
+  arrival: 2014-03-30 03:39:17
+  fleet: 
+  resource_type: 
+  quantity: 1
+
+two:
+  origin: 
+  destination: 
+  start: 2014-03-30 03:39:17
+  arrival: 2014-03-30 03:39:17
+  fleet: 
+  resource_type: 
+  quantity: 1
