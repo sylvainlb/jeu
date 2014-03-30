@@ -2,6 +2,9 @@
 
 <table>
   <tr>
+    <th>Zone</th>
+    <th>Resource type</th>
+    <th>Nb resource</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +12,9 @@
 
 <% @stocks.each do |stock| %>
   <tr>
+    <td><%= stock.zone %></td>
+    <td><%= stock.resource_type %></td>
+    <td><%= stock.nb_resource %></td>
     <td><%= link_to 'Show', stock %></td>
     <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
     <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
