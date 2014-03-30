@@ -26,7 +26,8 @@
     <div class="field">
       <%= f.label :current_route %><br />
       <%= f.collection_select(:current_route_id, TransportRoute.all, :id, :name) %>
-    </div>
+   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
