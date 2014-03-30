@@ -1,15 +1,13 @@
 Jeu.Views.ZonesIndex = Backbone.View.extend({
-  templates: {
-    icon: JST['zones/icon'],
-    menu: JST['zones/menu'],
+  initialize: function(){
+    _.bindAll(this, "renderZone");
   },
-  
-  events: {"click .zone" : "selectZone"},
-  selectZone: function(event) {
-    console.log(this.model.toJSON());
-    $("#panel").html(this.templates['menu'](this.model.toJSON()));
+  renderZone: function(model){
+    var zoneView = new Jeu.Views.ZoneView({model: model});
+    zoneView.render();
+    $(this.el).append(zoneView.el);
   },
-  render: function() {
-    this.$el.append($(this.templates['icon'](this.model.toJSON())));
+  render: function(){
+    this.collection.each(this.renderZone);
   }
 });
