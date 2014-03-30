@@ -4,7 +4,6 @@ Jeu.Views.FleetView = Backbone.View.extend({
   },
   
   selectFleet: function() {
-    console.log(this);
     $("#panel").html(this.templates['menu'](this.model.toJSON()));
   },
 });
