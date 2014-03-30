@@ -1,3 +1,11 @@
+jQuery.fn.serializeObject = function(){
+  var param = {};
+  jQuery.each(this.serializeArray(),function(k,v){
+    param[v.name] = v.value;
+  });
+  return param;
+};
+
 window.Jeu = {
   Models: {},
   Collections: {},

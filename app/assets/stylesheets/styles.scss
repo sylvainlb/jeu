@@ -51,20 +51,9 @@ $margin: 10px;
   position:absolute;
   margin-left:-$size/2;
   margin-top:-$size/2;
-  // box-shadow: 0 0 3px red inset; 
+  // box-shadow: 0 0 3px red inset;
+  transition: transform .5s;
   &.active{
-    animation: active 2s infinite;
-  }
-}
-
-@keyframes active{
-  0%{
-    transform: translateY(0px)
-  }
-  50%{
-    transform: translateY(-20px)
-  }
-  100%{
-    transform: translateY(0px)
+    transform: scale(1.5);
   }
 }
