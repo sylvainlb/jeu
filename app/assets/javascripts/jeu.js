@@ -3,27 +3,28 @@ window.Jeu = {
   Collections: {},
   Views: {},
   Routers: {},
-  fetchZones: function() {
-    this.region.set({zones: new this.Collections.Zones()});
-    this.region.get("zones").fetch({
-      success:function(){
-        Jeu.region.set({view: new Jeu.Views.ZonesIndex({
-          collection: Jeu.region.get("zones"), 
-          el: $("#map")
-        })});
-        Jeu.region.get("view").render();
-      }
-    });
-  },
-  fetchFleets: function() {
-    this.region.set({fleets: new this.Collections.Fleets()});
-    this.region.get("fleets").fetch();
+  drawZones: function() {
+    console.log(this);
+    new Jeu.Views.ZonesIndex({
+      collection: Jeu.region.get("zones"), 
+      el: $("#map")
+    }).render();
   },
   
   initialize: function() {
     this.region = new this.Models.Region();
-    this.fetchZones();
-    this.fetchFleets();
+    
+    var zones = new this.Collections.Zones();
+    var fleets = new this.Collections.Fleets();
+    
+    zones.fetch({success: this.drawZones});
+    fleets.fetch();
+    
+    this.region.set({
+      zones: zones,
+      fleets: fleets
+    });
+    
     new this.Routers.Zones;
     Backbone.history.start();
   }

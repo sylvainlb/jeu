@@ -1,8 +1,8 @@
 Jeu.Routers.Zones = Backbone.Router.extend({
   routes: {
-    "zones/:id": "selectZone"
+    "zones/:zone_id": "selectZone",
   },
-  selectZone: function(id) {
-    Jeu.region.get("view").selectZone(id);
-  }
+  selectZone: function(zone_id) {
+    (new Jeu.Views.ZonesIndex).selectZone(zone_id);
+  },
 })
