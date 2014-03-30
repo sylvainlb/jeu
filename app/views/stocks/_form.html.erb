@@ -11,25 +11,19 @@
     </div>
   <% end %>
 
-    <div class="field">
-      <%= f.label :zone %><br />
-      <%= f.collection_select(:zone_id, Zone.all, :id, :id) %>
-    </div>
-
-    <div class="field">
-      <%= f.label :resource_type %><br />
-      <%= f.collection_select(:resource_type, ResourceType.all, :id, :name) %>
-    </div>
-
-    <div class="field">
-      <%= f.label :nb_resource %><br />
-      <%= f.number_field :nb_resource %>
-    </div>
-
+  <div class="field">
+    <%= f.label :zone %><br />
+    <%= f.collection_select(:zone_id, Zone.all, :id, :id) %>
+  </div>
+  <div class="field">
+    <%= f.label :resource_type %><br />
+    <%= f.collection_select(:resource_type_id, ResourceType.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :nb_resource %><br />
+    <%= f.number_field :nb_resource %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
-
-
-
 <% end %>

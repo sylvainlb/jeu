@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140330013917) do
+ActiveRecord::Schema.define(:version => 20140330175355) do
 
   create_table "building_types", :force => true do |t|
     t.float    "output"
@@ -50,11 +50,13 @@ ActiveRecord::Schema.define(:version => 20140330013917) do
 
   create_table "stocks", :force => true do |t|
     t.integer  "zone_id"
+    t.integer  "resource_type_id"
     t.integer  "nb_resource"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
+  add_index "stocks", ["resource_type_id"], :name => "index_stocks_on_resource_type_id"
   add_index "stocks", ["zone_id"], :name => "index_stocks_on_zone_id"
 
   create_table "transport_routes", :force => true do |t|

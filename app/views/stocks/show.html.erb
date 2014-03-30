@@ -1,5 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>Zone:</b>
+  <%= @stock.zone %>
+</p>
+
+<p>
+  <b>Resource type:</b>
+  <%= @stock.resource_type %>
+</p>
+
+<p>
+  <b>Nb resource:</b>
+  <%= @stock.nb_resource %>
+</p>
+
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>
