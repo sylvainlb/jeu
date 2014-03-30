@@ -2,9 +2,11 @@ body,html{
   background: black;
   margin: 0;
   padding: 0;
-  color:#44f;
+  color:#fff;
 }
-
+a{
+  color:#0ff;
+}
 *,*:before,*:after{
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -13,15 +15,20 @@ body,html{
 
 $panelSize: 250px;
 $margin: 10px;
-#map{
+
+#mapwrapper{
   border: 1px solid green;
   position: absolute;
   top: $margin;
   left: $margin;
   right: $panelSize + $margin * 2;
   bottom: $margin;
-  background-image: url(dust.png);
   overflow: auto;
+}
+#map{
+  background-image: url(dust.png);
+  width: 1000px;
+  height: 1000px;
 }
 
 #panel{
@@ -53,6 +60,7 @@ $margin: 10px;
   // box-shadow: 0 0 3px red inset;
   transition: transform .5s;
   &.active{
+    transition: transform .5s cubic-bezier(0.45,3,0.56,1);
     transform: scale(1.5);
     z-index: 1;
   }
