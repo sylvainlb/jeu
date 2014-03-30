@@ -26,10 +26,14 @@ window.Jeu = {
     
     new this.Routers.Zones;
     new this.Routers.Fleets;
-    Backbone.history.start();
+
+    $.when(zones.fetch(),fleets.fetch()).done(function() {
+        Jeu.drawZones();
+        Backbone.history.start();
+    });
   }
 };
 
 $(document).ready(function(){
-  Jeu.initialize();
+    Jeu.initialize();
 });
