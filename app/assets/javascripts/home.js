@@ -7,7 +7,7 @@
  */
 
 
-//= require console-polyfill
+//= require console-polyfill.js
 //= require underscore
 //= require backbone
 //= require jeu
