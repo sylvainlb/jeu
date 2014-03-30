@@ -14,7 +14,6 @@ class Region < ActiveRecord::Base
     nbMineFer=rand(4)+1
     nbMineForet=rand(4)+1
     nbFactory=rand(4)+1
-    buildingtypes=BuildingType.all
     buildingTypeVille= BuildingType.where(:name => "City" )
     buildingTypeChamps= BuildingType.where(:name => "Field" )
     buildingTypeMinesFer= BuildingType.where(:name => "Iron mine" )
