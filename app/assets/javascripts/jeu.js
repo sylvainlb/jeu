@@ -14,20 +14,23 @@ window.Jeu = {
     this.region = new this.Models.Region();
     
     var zones = new this.Collections.Zones();
+    var routes = new this.Collections.Routes();
     var fleets = new this.Collections.Fleets();
     
     zones.fetch({success: this.drawZones});
     fleets.fetch();
+    routes.fetch();
     
     this.region.set({
       zones: zones,
-      fleets: fleets
+      fleets: fleets,
+      routes: routes
     });
     
     new this.Routers.Zones;
     new this.Routers.Fleets;
 
-    $.when(zones.fetch(),fleets.fetch()).done(function() {
+    $.when(zones.fetch(),fleets.fetch(),routes.fetch()).done(function() {
         Jeu.drawZones();
         Backbone.history.start();
     });
