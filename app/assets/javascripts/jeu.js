@@ -30,7 +30,7 @@ window.Jeu = {
     new this.Routers.Zones;
     new this.Routers.Fleets;
 
-    $.when(zones.fetch(),fleets.fetch(),routes.fetch()).done(function() {
+    $.when(zones.fetch(), fleets.fetch(), transportRoutes.fetch()).done(function() {
         Jeu.drawZones();
         Backbone.history.start();
     });
