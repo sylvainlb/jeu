@@ -14,11 +14,13 @@ class Region < ActiveRecord::Base
     nbMineFer=rand(4)+1
     nbMineForet=rand(4)+1
     nbFactory=rand(4)+1
+
     buildingTypeVille= BuildingType.where(:name => "City" ).first
     buildingTypeChamps= BuildingType.where(:name => "Field" ).first
     buildingTypeMinesFer= BuildingType.where(:name => "Iron Mine" ).first
     buildingTypeForet= BuildingType.where(:name => "Sawmill" ).first
     buildingTypeFactory= BuildingType.where(:name => "Factory" ).first
+
     cityNb=0
     champsNb=0
     minesNb=0
@@ -35,6 +37,7 @@ class Region < ActiveRecord::Base
     while champsNb < nbChamps
       createBool = self.zones.new(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeChamps.id)
       if createBool.save
+
         champsNb=champsNb+1
       end
     end
@@ -42,6 +45,7 @@ class Region < ActiveRecord::Base
     while minesNb < nbMineFer
       createBool = self.zones.new(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeMinesFer.id)
       if createBool.save
+
         minesNb=minesNb+1
       end
     end
@@ -49,6 +53,7 @@ class Region < ActiveRecord::Base
     while foretNb < nbMineForet
       createBool = self.zones.new(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeForet.id)
       if createBool.save
+
         foretNb=foretNb+1
       end
     end
@@ -56,6 +61,7 @@ class Region < ActiveRecord::Base
     while factoryNb < nbFactory
       createBool = self.zones.new(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeFactory.id)
       if createBool.save
+
         factoryNb=factoryNb+1
       end
     end

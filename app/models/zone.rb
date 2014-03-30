@@ -12,6 +12,8 @@ class Zone < ActiveRecord::Base
 
   validate :square_radius
 
+  after_create :stock_generation
+
 
   def distance_coord(x,y)
     Math.sqrt((coordX-x)**2 + (coordY-y)**2 )
@@ -21,5 +23,26 @@ class Zone < ActiveRecord::Base
     radius=40
     tooClose=Zone.where(:coordX => (self.coordX-radius..self.coordX+radius), :coordY => (self.coordY-radius..self.coordY+radius))
     errors.add(:coordX,'too close to an existing zone') unless tooClose.empty?
+  end
+
+
+  def stock_generation
+    nbpersonneville=rand(800)+200
+    nbnouritureville=rand(8000)+2000
+    nbnouritureautre=rand(30)+30
+    nbnersonneautre=rand(15)+5
+
+    resourceTypePeople= ResourceType.where(:name => "People" ).first
+    resourceTypeFood= ResourceType.where(:name => "Food" ).first
+
+    if self.building_type.name=="City"
+    self.stocks.create(resource_type_id:resourceTypePeople.id, nb_resource:nbpersonneville)
+    self.stocks.create(resource_type_id:resourceTypeFood.id, nb_resource:nbnouritureville)
+    end
+
+    if  self.building_type.name!="City"
+     self.stocks.create(resource_type_id:resourceTypePeople.id, nb_resource:nbnersonneautre)
+    self.stocks.create(resource_type_id:resourceTypeFood.id, nb_resource:nbnouritureautre)
+    end
   end
 end
