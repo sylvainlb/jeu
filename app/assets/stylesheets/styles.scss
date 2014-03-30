@@ -41,9 +41,8 @@ $margin: 10px;
 }
 
 .zone{
-  $size: 50px;
+  $size: 60px;
   //background:#77f;
-  background-image: url(mine.png);
   background-size: cover;
   background-repeat: no-repeat;
   width:$size;
@@ -55,5 +54,21 @@ $margin: 10px;
   transition: transform .5s;
   &.active{
     transform: scale(1.5);
+    z-index: 1;
+  }
+  &.zone-1{
+    background-image: url(sawmill.png);
+  }
+  &.zone-2{
+    background-image: url(iron-mine.png);
+  }
+  &.zone-3{
+    background-image: url(field.png);
+  }
+  &.zone-4{
+    background-image: url(city.png);
+  }
+  &.zone-5{
+    background-image: url(factory.png);
   }
 }
