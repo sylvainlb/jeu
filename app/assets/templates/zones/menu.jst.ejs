@@ -1,1 +1,15 @@
-Ceci est le <%-type%> numéro <%-id%> 
+<div>
+  <h2>Bienvenue à <%-building_type_id%> numéro <%-id%></h2>
+  <ul>
+    <li>Population: </li>
+    <li>Nourriture:</li>
+    <li>Stocks:</li>
+  </ul>
+</div>
+<div>
+  <h3>Flottes</h3>
+  <ul><%_.each(fleets, function(fleet){%>
+    <li><%-fleet.get("nb_vehicle")%> véhicules</li>
+  <%})%></ul>
+</div>
+

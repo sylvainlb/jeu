@@ -3,15 +3,27 @@ window.Jeu = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
-    this.region = new this.Models.Region();
+  fetchZones: function() {
     this.region.set({zones: new this.Collections.Zones()});
     this.region.get("zones").fetch({
       success:function(){
-        var view = new Jeu.Views.ZonesIndex({collection: Jeu.region.get("zones"), el: $("#map")});
+        var view = new Jeu.Views.ZonesIndex({
+          collection: Jeu.region.get("zones"), 
+          el: $("#map")
+        });
         view.render();
       }
     });
+  },
+  fetchFleets: function() {
+    this.region.set({fleets: new this.Collections.Fleets()});
+    this.region.get("fleets").fetch();
+  },
+  
+  initialize: function() {
+    this.region = new this.Models.Region();
+    this.fetchZones();
+    this.fetchFleets();
   }
 };
 
