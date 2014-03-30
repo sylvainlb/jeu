@@ -41,9 +41,8 @@ $margin: 10px;
 }
 
 .zone{
-  $size: 50px;
+  $size: 60px;
   //background:#77f;
-  background-image: url(mine.png);
   background-size: cover;
   background-repeat: no-repeat;
   width:$size;
@@ -51,20 +50,25 @@ $margin: 10px;
   position:absolute;
   margin-left:-$size/2;
   margin-top:-$size/2;
-  // box-shadow: 0 0 3px red inset; 
+  // box-shadow: 0 0 3px red inset;
+  transition: transform .5s;
   &.active{
-    animation: active 2s infinite;
+    transform: scale(1.5);
+    z-index: 1;
   }
-}
-
-@keyframes active{
-  0%{
-    transform: translateY(0px)
+  &.zone-1{
+    background-image: url(sawmill.png);
   }
-  50%{
-    transform: translateY(-20px)
+  &.zone-2{
+    background-image: url(iron-mine.png);
   }
-  100%{
-    transform: translateY(0px)
+  &.zone-3{
+    background-image: url(field.png);
+  }
+  &.zone-4{
+    background-image: url(city.png);
+  }
+  &.zone-5{
+    background-image: url(factory.png);
   }
 }

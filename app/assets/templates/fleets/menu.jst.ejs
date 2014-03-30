@@ -7,5 +7,24 @@
 </div>
 <div>
   <h3>Routes</h3>
-  
+  <ul><%_.each(transportRoutes, function(route){%>
+    <li>
+      from <%-route.get("origin_id")%>
+      to <%-route.get("destination_id")%>
+      with <%-route.get("quantity")%>
+      <%-route.get("resource_type_id")%>
+    </li>
+  <%})%></ul>
+  <form id="route_form" onsubmit="return false">
+    <label for="origin_id">Origine</label>
+    <input type="text" name="origin_id" value="1" />
+    <label for="destination_id">Destination</label>
+    <input type="text" name="destination_id" value="1" />
+    <label for="quantity">Quantité</label>
+    <input type="text" name="quantity" value="1" />
+    <label for="resource_type_id">Type de ressource</label>
+    <input type="text" name="resource_type_id" value="1" />
+    <input type="hidden" value="<%-id%>" name="fleet_id" />
+    <input type="submit" value="Ajouter" />
+  </form>
 </div>

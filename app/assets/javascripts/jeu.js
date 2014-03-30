@@ -1,3 +1,11 @@
+jQuery.fn.serializeObject = function(){
+  var param = {};
+  jQuery.each(this.serializeArray(),function(k,v){
+    param[v.name] = v.value;
+  });
+  return param;
+};
+
 window.Jeu = {
   Models: {},
   Collections: {},
@@ -14,20 +22,23 @@ window.Jeu = {
     this.region = new this.Models.Region();
     
     var zones = new this.Collections.Zones();
+    var transportRoutes = new this.Collections.TransportRoutes();
     var fleets = new this.Collections.Fleets();
     
     zones.fetch({success: this.drawZones});
     fleets.fetch();
+    transportRoutes.fetch();
     
     this.region.set({
       zones: zones,
-      fleets: fleets
+      fleets: fleets,
+      transportRoutes: transportRoutes
     });
     
     new this.Routers.Zones;
     new this.Routers.Fleets;
 
-    $.when(zones.fetch(),fleets.fetch()).done(function() {
+    $.when(zones.fetch(), fleets.fetch(), transportRoutes.fetch()).done(function() {
         Jeu.drawZones();
         Backbone.history.start();
     });
