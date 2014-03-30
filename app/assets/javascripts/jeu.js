@@ -14,17 +14,17 @@ window.Jeu = {
     this.region = new this.Models.Region();
     
     var zones = new this.Collections.Zones();
-    var routes = new this.Collections.Routes();
+    var transportRoutes = new this.Collections.TransportRoutes();
     var fleets = new this.Collections.Fleets();
     
     zones.fetch({success: this.drawZones});
     fleets.fetch();
-    routes.fetch();
+    transportRoutes.fetch();
     
     this.region.set({
       zones: zones,
       fleets: fleets,
-      routes: routes
+      transportRoutes: transportRoutes
     });
     
     new this.Routers.Zones;
