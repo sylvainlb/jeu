@@ -1,43 +1,43 @@
 body,html{
-	background: black;
-	margin: 0;
-	padding: 0;
-	color:#44f;
+  background: black;
+  margin: 0;
+  padding: 0;
+  color:#44f;
 }
 
 *,*:before,*:after{
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 $panelSize: 250px;
 $margin: 10px;
 #map{
-	border: 1px solid green;
-	position: absolute;
-	top: $margin;
-	left: $margin;
-	right: $panelSize + $margin * 2;
-	bottom: $margin;
-	background-image: url(dust.png);
-	overflow: hidden;
+  border: 1px solid green;
+  position: absolute;
+  top: $margin;
+  left: $margin;
+  right: $panelSize + $margin * 2;
+  bottom: $margin;
+  background-image: url(dust.png);
+  overflow: auto;
 }
 
 #panel{
-	border: 1px solid blue;
-	background: #1a8e8c;
-	background-image: 
-		url(panel-top.png),
-		url(panel-bottom.png);
-		background-size:100% auto;
-	background-repeat: no-repeat;
-	background-position: top,bottom;
-	position: absolute;
-	right: $margin;
-	top: $margin;
-	bottom: $margin;
-	width: $panelSize;
+  border: 1px solid blue;
+  background: #1a8e8c;
+  background-image: 
+    url(panel-top.png),
+    url(panel-bottom.png);
+    background-size:100% auto;
+  background-repeat: no-repeat;
+  background-position: top,bottom;
+  position: absolute;
+  right: $margin;
+  top: $margin;
+  bottom: $margin;
+  width: $panelSize;
 }
 
 .zone{
