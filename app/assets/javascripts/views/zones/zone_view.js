@@ -4,17 +4,15 @@ Jeu.Views.ZoneView = Backbone.View.extend({
     menu: JST['zones/menu'],
   },
   selectZone: function() {
-    
-    $("#panel").html(this.templates['menu'](this.model.toJSON()));
     var self = this;
+
+    $("#panel").html( this.templates['menu'] ( this.model.toJSON() ) );
+
     var form = $('#fleet_form');
-
-    form.on('submit',function(){
-      var param = form.serializeObject();
-
-      var newFleet = new Jeu.Models.Fleet(param);
-      newFleet.save().done(function(){
-        Jeu.region.get('fleets').push(newFleet);
+    form.on('submit', function(){
+      var newFleet = new Jeu.Models.Fleet( form.serializeObject() );
+      newFleet.save().done( function() {
+        Jeu.region.get( 'fleets' ).push( newFleet );
         self.selectZone();
       });
     });

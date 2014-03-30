@@ -24,9 +24,15 @@ $margin: 10px;
   right: $panelSize + $margin * 2;
   bottom: $margin;
   overflow: auto;
+  >div{
+    border:60px solid #444;
+    position: absolute;
+  }
 }
 #map{
+  position: relative;
   background-image: url(dust.png);
+  overflow: hidden;
   width: 1000px;
   height: 1000px;
 }
