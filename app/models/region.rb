@@ -19,25 +19,45 @@ class Region < ActiveRecord::Base
     buildingTypeMinesFer= BuildingType.where(:name => "Iron mine" )
     buildingTypeForet= BuildingType.where(:name => "Sawmill" )
     buildingTypeFactory= BuildingType.where(:name => "Factory" )
+    cityNb=0
+    champsNb=0
+    minesNb=0
+    foretNb=0
+    factoryNb=0
 
-    for cityNb in 1..nbCity
-      self.zones.create(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeVille.id)
+    while cityNb < nbCity
+      createBool = self.zones.new(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeVille.id)
+      if createBool.save
+        cityNb=cityNb+1
+      end
     end
 
-    for champsNb in 1..nbChamps
-     test = self.zones.create(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeChamps.id)
+    while champsNb < nbChamps
+      createBool = self.zones.create(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeChamps.id)
+      if createBool.save
+        champsNb=champsNb+1
+      end
     end
 
-    for minesNb in 1..nbMineFer
-          self.zones.create(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeMinesFer.id)
+    while minesNb < nbMineFer
+      createBool = self.zones.create(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeMinesFer.id)
+      if createBool.save
+        minesNb=minesNb+1
+      end
     end
 
-    for foretNb in 1..nbMineForet
-      self.zones.create(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeForet.id)
+    while foretNb < nbMineForet
+      createBool = self.zones.create(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeForet.id)
+      if createBool.save
+        foretNb=foretNb+1
+      end
     end
 
-    for factoryNb in 1..nbFactory
-      self.zones.create(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeFactory.id)
+    while factoryNb < nbFactory
+      createBool = self.zones.create(coordX: rand(1000), coordY: rand(1000), building_type_id:buildingTypeFactory.id)
+      if createBool.save
+        factoryNb=factoryNb+1
+      end
     end
 
   end
