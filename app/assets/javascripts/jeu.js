@@ -7,11 +7,11 @@ window.Jeu = {
     this.region.set({zones: new this.Collections.Zones()});
     this.region.get("zones").fetch({
       success:function(){
-        var view = new Jeu.Views.ZonesIndex({
+        Jeu.region.set({view: new Jeu.Views.ZonesIndex({
           collection: Jeu.region.get("zones"), 
           el: $("#map")
-        });
-        view.render();
+        })});
+        Jeu.region.get("view").render();
       }
     });
   },
@@ -24,6 +24,8 @@ window.Jeu = {
     this.region = new this.Models.Region();
     this.fetchZones();
     this.fetchFleets();
+    new this.Routers.Zones;
+    Backbone.history.start();
   }
 };
 
