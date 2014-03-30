@@ -6,8 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
-
-//= require console-polyfill.js
+//= stub application
+//= require console-polyfill
 //= require underscore
 //= require backbone
 //= require jeu
