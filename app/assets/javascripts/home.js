@@ -5,6 +5,9 @@
  * Time: 22:25
  * To change this template use File | Settings | File Templates.
  */
+
+
+//= require console-polyfill.js
 //= require underscore
 //= require backbone
 //= require jeu
