@@ -11,7 +11,19 @@
     </div>
   <% end %>
 
-  <div class="actions">
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :capacity %><br />
+      <%= f.number_field :capacity %>
+    </div>
+    <div class="field">
+      <%= f.label :speed %><br />
+      <%= f.number_field :speed %>
+    </div>
+    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

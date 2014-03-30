@@ -12,8 +12,8 @@
 
 <% @fleets.each do |fleet| %>
   <tr>
-    <td><%= fleet.nbVehicule %></td>
-    <td><%= fleet.vehicleType %></td>
+    <td><%= fleet.nb_vehicle %></td>
+    <td><%= fleet.vehicle_type %></td>
     <td><%= fleet.zone %></td>
     <td><%= link_to 'Show', fleet %></td>
     <td><%= link_to 'Edit', edit_fleet_path(fleet) %></td>

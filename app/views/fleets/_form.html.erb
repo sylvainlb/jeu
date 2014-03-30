@@ -12,17 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :nbVehicule %><br />
-    <%= f.number_field :nbVehicule %>
+    <%= f.label :nb_vehicle %><br />
+    <%= f.number_field :nb_vehicle %>
   </div>
   <div class="field">
-    <%= f.label :vehicleType %><br />
-    <%= f.text_field :vehicleType %>
+    <%= f.label :vehicle_type %><br />
+    <%= f.collection_select(:vehicle_type_id, VehicleType.all, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :zone %><br />
-    <%= f.text_field :zone %>
+    <%= f.collection_select(:zone_id, Zone.all, :id, :id) %>
   </div>
+    <div class="field">
+      <%= f.label :current_route %><br />
+      <%= f.collection_select(:current_route_id, TransportRoute.all, :id, :name) %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

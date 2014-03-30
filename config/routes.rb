@@ -1,10 +1,8 @@
 Jeu::Application.routes.draw do
-  resources :stocks
-
-
-  root :to => 'home#index'
+    root :to => 'home#index'
 
   resources :fleets
+  resources :transport_routes
   resources :zones
   resources :regions do
     resources :zones
