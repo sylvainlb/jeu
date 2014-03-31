@@ -5,6 +5,8 @@ class CreateZones < ActiveRecord::Migration
       t.references :building_type
       t.integer :coordX
       t.integer :coordY
+      t.timestamp :next_production_time
+      t.timestamp :production_start_time
 
       t.timestamps
     end
