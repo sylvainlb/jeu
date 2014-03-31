@@ -24,21 +24,19 @@ window.Jeu = {
     var zones = new this.Collections.Zones();
     var transportRoutes = new this.Collections.TransportRoutes();
     var fleets = new this.Collections.Fleets();
-    
-    zones.fetch({success: this.drawZones});
-    fleets.fetch();
-    transportRoutes.fetch();
+    var resourceTypes = new this.Collections.ResourceTypes();
     
     this.region.set({
       zones: zones,
       fleets: fleets,
-      transportRoutes: transportRoutes
+      transportRoutes: transportRoutes,
+      resourceTypes: resourceTypes
     });
     
     new this.Routers.Zones;
     new this.Routers.Fleets;
 
-    $.when(zones.fetch(), fleets.fetch(), transportRoutes.fetch()).done(function() {
+    $.when(zones.fetch(), fleets.fetch(), transportRoutes.fetch(), resourceTypes.fetch()).done(function() {
         Jeu.drawZones();
         Backbone.history.start();
     });
