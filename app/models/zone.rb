@@ -5,6 +5,7 @@ class Zone < ActiveRecord::Base
   has_many :fleets, :dependent => :destroy
   attr_accessible :coordX, :coordY
   attr_accessible :building_type_id, :region_id
+  attr_accessor :population, :productivity
 
   validates :building_type_id, :coordX, :coordY, :region_id, :presence => :true
 
@@ -15,6 +16,14 @@ class Zone < ActiveRecord::Base
   after_create :stock_generation
 
 
+  def population
+    stocks.joins(:resource_type).where(resource_types: {name: 'People'}).sum(:nb_resource)
+  end
+
+  def productivity
+    population * building_type.output
+  end
+
   def distance_coord(x,y)
     Math.sqrt((coordX-x)**2 + (coordY-y)**2 )
   end
@@ -24,7 +33,6 @@ class Zone < ActiveRecord::Base
     tooClose=Zone.where(:coordX => (self.coordX-radius..self.coordX+radius), :coordY => (self.coordY-radius..self.coordY+radius))
     errors.add(:coordX,'too close to an existing zone') unless tooClose.empty?
   end
-
 
   def stock_generation
     nbpersonneville=rand(800)+200

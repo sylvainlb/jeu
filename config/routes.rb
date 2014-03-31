@@ -6,13 +6,15 @@ Jeu::Application.routes.draw do
 
   resources :fleets ,defaults: {format: :json}
   resources :transport_routes ,defaults: {format: :json}
-  resources :zones ,defaults: {format: :json}
+  resources :zones ,defaults: {format: :json} do
+    resources :stocks ,defaults: {format: :json}
+
+  end
   resources :regions ,defaults: {format: :json} do
     resources :zones ,defaults: {format: :json}
   end
   resources :resource_types ,defaults: {format: :json}
   resources :building_types ,defaults: {format: :json}
-  resources :stocks ,defaults: {format: :json}
   resources :vehicle_types ,defaults: {format: :json}
 
 
