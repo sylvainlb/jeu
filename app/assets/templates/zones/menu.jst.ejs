@@ -1,21 +1,29 @@
 <div>
-  <h2>Bienvenue à <%-building_type_id%> numéro <%-id%></h2>
+  <h2>Bienvenue à <%-building_type%> <%-id%></h2>
   <ul>
-    <li>Population: </li>
+    <li>Population: <%-population%></li>
     <li>Nourriture:</li>
-    <li>Stocks:</li>
+    <li>Stocks:
+      <ul><%_.each(stocks, function(stock){%>
+        <li><%-stock.resource_type%>: <%-stock.nb_resource%></li>
+      <%})%></ul>
+    </li>
   </ul>
 </div>
 <div>
   <h3>Flottes</h3>
   <ul><%_.each(fleets, function(fleet){%>
-    <li><a href="#/fleets/<%-fleet.get("id")%>"><%-fleet.get("nb_vehicle")%> véhicules</a></li>
+    <li><a href="#/fleets/<%-fleet.get("id")%>">Flotte numéro <%-fleet.get("id")%> : <%-fleet.get("nb_vehicle")%> véhicules</a></li>
   <%})%></ul>
-  <form id="fleet_form" onsubmit="return false">
-    <label for="nb_vehicle">Nombre de véhicules</label>
-    <input type="number" name="nb_vehicle" value="1" />
-    <input type="hidden" value="<%-id%>" name="zone_id" />
-    <input type="submit" value="Ajouter" />
-  </form>
+  <!--%if(false){%-->
+    <form id="fleet_form" onsubmit="return false">
+      <label for="nb_vehicle">Nombre de véhicules</label>
+      <input type="number" name="nb_vehicle" value="1" />
+      <input type="hidden" value="<%-id%>" name="zone_id" />
+      <input type="submit" value="Créer" />
+    </form>
+  <!--%} else {%-->
+    Pas de véhicules présents pour créer une flotte.
+  <!--%}%-->
 </div>
 
