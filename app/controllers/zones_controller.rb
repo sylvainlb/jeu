@@ -2,20 +2,23 @@ class ZonesController < ApplicationController
   # GET /zones
   # GET /zones.json
   def index
-    @zones = Zone.where(:region_id => params[:region_id])
     if params[:region_id].nil?
-      @zones = Zone.all
+      @zones = Zone.includes({building_type: :resource_type},{stocks: :resource_type})
+    else
+      @zones = Zone.includes({building_type: :resource_type},{stocks: :resource_type}).where(:region_id => params[:region_id])
     end
+
+
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @zones }
+      format.json
     end
   end
 
   # GET /zones/1
   # GET /zones/1.json
   def show
-    @zone = Zone.find(params[:id])
+    @zone = Zone.includes({building_type: :resource_type},{stocks: :resource_type}).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
