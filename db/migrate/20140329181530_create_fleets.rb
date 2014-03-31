@@ -5,8 +5,8 @@ class CreateFleets < ActiveRecord::Migration
       t.references :vehicle_type
       t.references :zone
       t.references :current_route
-      t.timestamps :arrival
-      t.timestamps :departure
+      t.timestamp :arrival
+      t.timestamp :departure
 
       t.timestamps
     end

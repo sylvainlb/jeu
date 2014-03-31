@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20140331160518) do
 
   create_table "building_types", :force => true do |t|
-    t.float    "output"
+    t.float    "cycle_time"
     t.string   "name"
     t.string   "icon_name"
     t.integer  "resource_type_id"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20140331160518) do
     t.integer  "vehicle_type_id"
     t.integer  "zone_id"
     t.integer  "current_route_id"
+    t.datetime "arrival"
+    t.datetime "departure"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
@@ -103,8 +105,10 @@ ActiveRecord::Schema.define(:version => 20140331160518) do
     t.integer  "building_type_id"
     t.integer  "coordX"
     t.integer  "coordY"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "next_production_time"
+    t.datetime "production_start_time"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   add_index "zones", ["building_type_id"], :name => "index_zones_on_building_type_id"
