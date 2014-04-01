@@ -4,3 +4,4 @@ json.building_type_id zone.building_type_id
 json.building_type zone.building_type.name
 json.resource_type zone.building_type.resource_type.name
 json.resource_type_id zone.building_type.resource_type_id
+json.named_stocks zone.stocks, partial: 'stocks/named_stock', as: :stock
