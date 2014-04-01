@@ -25,6 +25,10 @@ gem 'jquery-rails'
 group :development do
   gem 'better_errors'
   gem "binding_of_caller"
+
+  # Deploy with Capistrano
+  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano-rails', '~> 1.1'
 end
 
 gem 'backbone-on-rails'
@@ -42,8 +46,7 @@ gem 'yajl-ruby'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+
 
 # To use debugger
 # gem 'debugger'
