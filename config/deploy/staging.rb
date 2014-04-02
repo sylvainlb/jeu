@@ -28,7 +28,6 @@
 # and/or per server
 server 'gaming',
    user: 'deployer',
-   roles: %w{web db app},
-   deploy_to: '/opt/apps/jeu'
+   roles: %w{web db app}
    #}
 # setting per server overrides global ssh_options
