@@ -9,9 +9,9 @@ gem 'sqlite3'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 
 group :production do
-  gem 'libv8'
+  gem 'libv8', platform: :ruby
   gem 'execjs'
-  gem 'therubyracer'
+  gem 'therubyracer', platform: :ruby
 end
 
 

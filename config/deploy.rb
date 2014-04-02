@@ -1,10 +1,9 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 
-require 'net/ssh/proxy/command'
 
 set :application, 'jeu'
-set :repo_url, 'git@github.com:sylvainlb/jeu.git'
+set :repo_url, 'git@git:vincent/jeu.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
