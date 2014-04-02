@@ -7,7 +7,12 @@ gem 'rails', '3.2.14'
 
 gem 'sqlite3'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', :platforms => :ruby
+
+group :production do
+  gem 'libv8'
+  gem 'execjs'
+  gem 'therubyracer'
+end
 
 
 # Gems used only for assets and not required
