@@ -29,11 +29,13 @@ gem 'jquery-rails'
 group :development do
   gem 'better_errors'
   gem "binding_of_caller"
-
-  # Deploy with Capistrano
-  gem 'capistrano', '~> 3.1.0'
-  gem 'capistrano-rails', '~> 1.1'
 end
+
+# Deploy with Capistrano
+gem 'capistrano', '~> 3.1.0'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-rbenv', '~> 2.0'
+gem 'capistrano-bundler', '~> 1.1.2'
 
 gem 'backbone-on-rails'
 gem 'underscore-rails'
