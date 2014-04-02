@@ -6,26 +6,43 @@ The most awesome game in the whole world!
 
 1. Clone
 
-  git clone https://github.com/sylvainlb/jeu.git
+        git clone https://github.com/sylvainlb/jeu.git
 
 2. Configure your database with the database.yml.example
 
 3. Bundle, run migrations
 
-  bundle install
-  bundle exec rake db:migrate
+        bundle install
+        bundle exec rake db:migrate
 
 4. Seed the DB
 
-  bundle exec rake db:seed
+        bundle exec rake db:seed
 
 5. Start the Tasks'n'Jobs managers in two differents terminals (if you want to see them work, and be able to kill them with CTRL+C
 
-  bundle exec clockwork lib/clockwork.rb
-  bundle exec rake jobs:work
+        bundle exec clockwork lib/clockwork.rb
+        bundle exec rake jobs:work
 
 6. Start the server
 
-  bundle exec rails s
+        bundle exec rails s
 
 7. Enjoy!
+
+== But I have a real production server
+
+Well then, you are well equiped!
+
+1. Clone
+
+        git clone https://github.com/sylvainlb/jeu.git
+
+2. Configure config/database.yml and your server in config/deploy/staging.rb or production.rb
+
+3. Deploy
+
+        bundle exec cap staging deploy
+
+4. Enjoy even more!
+
