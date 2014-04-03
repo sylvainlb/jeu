@@ -1,7 +1,3 @@
-
-set :cw_log_file, "#{shared_path}/log/clockwork.log"
-set :cw_pid_file, "#{shared_path}/tmp/pids/clockwork.pid"
-
 namespace :workers do
   namespace :clockwork do
     desc "Stop clockwork"
@@ -48,6 +44,14 @@ namespace :workers do
         end
       end
     end
+
+    def cw_log_file
+      "#{shared_path}/log/clockwork.log"
+    end
+    def cw_pid_file
+      "#{shared_path}/tmp/pids/clockwork.pid"
+    end
+
 
     def rails_env
       fetch(:rails_env, false) ? "RAILS_ENV=#{fetch(:rails_env)}" : ''
