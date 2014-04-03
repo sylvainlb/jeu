@@ -28,8 +28,8 @@
 # and/or per server
 server 'gaming',
    user: 'deployer',
-   roles: %w{web db app},
-   rails_env: :production
-
+   roles: %w{web db app}
+set :rails_env, :production
+set :branch, "staging"
    #}
 # setting per server overrides global ssh_options
