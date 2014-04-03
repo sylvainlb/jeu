@@ -29,7 +29,7 @@
 server 'gaming',
    user: 'deployer',
    roles: %w{web db app}
-set :rails_env, :production
+set :rails_env, 'production'
 set :branch, "staging"
    #}
 # setting per server overrides global ssh_options

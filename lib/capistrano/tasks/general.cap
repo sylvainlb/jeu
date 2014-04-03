@@ -4,7 +4,7 @@ namespace :deploy do
     task :clear do
       on primary :db do
         within current_path do
-          with rails_env: fetch(:stage) do
+          with rails_env: fetch(:rails_env) do
             execute :rake, 'log:clear'
           end
         end
@@ -17,7 +17,7 @@ namespace :deploy do
     task :clear do
       on primary :db do
         within current_path do
-          with rails_env: fetch(:stage) do
+          with rails_env: fetch(:rails_env) do
             execute :rake, 'tmp:clear'
           end
         end
