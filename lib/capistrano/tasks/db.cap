@@ -4,7 +4,7 @@
       task :drop do
         on primary :db do
           within current_path do
-            with rails_env: fetch(:stage) do
+            with rails_env: fetch(:rails_env) do
               execute :rake, 'db:drop'
             end
           end
@@ -15,7 +15,7 @@
       task :reset do
         on primary :db do
           within current_path do
-            with rails_env: fetch(:stage) do
+            with rails_env: fetch(:rails_env) do
               execute :rake, 'db:reset'
             end
           end
@@ -29,7 +29,7 @@
       task :setup do
         on primary :db do
           within current_path do
-            with rails_env: fetch(:stage) do
+            with rails_env: fetch(:rails_env) do
               execute :rake, 'db:setup'
             end
           end
@@ -40,7 +40,7 @@
       task :seed do
         on primary :db do
           within current_path do
-            with rails_env: fetch(:stage) do
+            with rails_env: fetch(:rails_env) do
               execute :rake, 'db:seed'
             end
           end
@@ -51,7 +51,7 @@
       task :rollback do
         on primary :db do
           within current_path do
-            with rails_env: fetch(:stage) do
+            with rails_env: fetch(:rails_env) do
               execute :rake, 'db:rollback'
             end
           end
