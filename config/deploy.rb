@@ -48,20 +48,20 @@ namespace :deploy do
 
   desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
+    #on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       execute :touch, release_path.join('tmp/restart.txt')
-      #invoke 'workers:clockwork:restart'
-      #invoke 'workers:delayed_job:restart'
-    end
+      invoke 'workers:clockwork:restart'
+      invoke 'workers:delayed_job:restart'
+    #end
   end
 
   desc 'Stop workers'
   task :stop_workers do
-    on roles(:app), in: :sequence, wait: 5 do
-      #invoke 'workers:clockwork:stop'
-      #invoke 'workers:delayed_job:stop'
-    end
+    #on roles(:app), in: :sequence, wait: 5 do
+      invoke 'workers:clockwork:stop'
+      invoke 'workers:delayed_job:stop'
+   # end
   end
 
   after :started, :stop_workers

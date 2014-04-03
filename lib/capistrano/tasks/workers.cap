@@ -5,7 +5,18 @@ namespace :workers do
       on roles(:app) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-            execute :bundle, :exec, :clockworkd, '-c lib/clockwork.rb stop'
+            execute :bundle, :exec, :clockworkd, "-c lib/clockwork.rb --pid-dir=#{cw_pid_dir} --log-dir=#{cw_log_dir} stop"
+          end
+        end
+      end
+    end
+
+    desc "Clockwork status"
+    task :status do
+      on roles(:app) do
+        within release_path do
+          with rails_env: fetch(:rails_env) do
+            execute :bundle, :exec, :clockworkd, "-c lib/clockwork.rb --pid-dir=#{cw_pid_dir} --log-dir=#{cw_log_dir} status"
           end
         end
       end
@@ -16,7 +27,7 @@ namespace :workers do
       on roles(:app) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-            execute :bundle, :exec, :clockworkd, '-c lib/clockwork.rb start'
+            execute :bundle, :exec, :clockworkd, "-c lib/clockwork.rb --pid-dir=#{cw_pid_dir} --log-dir=#{cw_log_dir} start"
           end
         end
       end
@@ -24,21 +35,21 @@ namespace :workers do
 
     desc "Restart clockwork"
     task :restart do
-      on roles(:app) do
+      #on roles(:app) do
         within release_path do
           with rails_env: fetch(:rails_env) do
             invoke :stop
             invoke :start
           end
         end
-      end
+      #end
     end
 
-    def cw_log_file
-      "#{shared_path}/log/clockwork.log"
+    def cw_log_dir
+      "#{shared_path}/log"
     end
-    def cw_pid_file
-      "#{shared_path}/tmp/pids/clockwork.pid"
+    def cw_pid_dir
+      "#{shared_path}/tmp/pids"
     end
 
 
@@ -91,26 +102,3 @@ namespace :workers do
 
   end
 end
-
-namespace :deploy do
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      invoke 'workers:clockwork:restart'
-      invoke 'workers:delayed_job:restart'
-    end
-  end
-
-  desc 'Stop workers'
-  task :stop_workers do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'workers:clockwork:stop'
-      invoke 'workers:delayed_job:stop'
-    end
-  end
-
-  after :started, :stop_workers
-end
-
