@@ -60,6 +60,8 @@ GEM
     clockwork (0.7.3)
       activesupport
       tzinfo
+    clockworkd (0.2.5)
+      tzinfo (>= 0.3.23)
     coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -68,6 +70,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    daemons (1.1.9)
     debug_inspector (0.0.2)
     delayed_job (4.0.0)
       activesupport (>= 3.0, < 4.1)
@@ -175,7 +178,9 @@ DEPENDENCIES
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
   clockwork
+  clockworkd
   coffee-rails (~> 3.2.1)
+  daemons
   delayed_job_active_record
   execjs
   jbuilder

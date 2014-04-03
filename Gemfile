@@ -42,6 +42,9 @@ gem 'underscore-rails'
 
 gem 'delayed_job_active_record'
 gem 'clockwork'
+
+gem 'daemons'
+gem 'clockworkd'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
