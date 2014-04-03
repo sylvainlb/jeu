@@ -27,8 +27,8 @@ namespace :workers do
       on roles(:app) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-            stop
-            start
+            invoke :stop
+            invoke :start
           end
         end
       end
