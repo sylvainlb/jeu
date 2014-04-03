@@ -5,7 +5,7 @@ namespace :workers do
       on roles(:app) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-            execute :daemon, "--inherit --name=clockwork --output=#{cw_log_file} --pidfile=#{cw_pid_file} -D #{current_path} --stop || true"
+            execute :clockworkd, '-c lib/clockwork.rb stop'
           end
         end
       end
@@ -27,7 +27,7 @@ namespace :workers do
       on roles(:app) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-            execute :clockworkd, '-c lib/clockwork.rb'
+            execute :clockworkd, '-c lib/clockwork.rb start'
           end
         end
       end
