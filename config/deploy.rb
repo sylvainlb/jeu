@@ -43,6 +43,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails clockwork}
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+
 namespace :deploy do
 
   desc 'Restart application'
@@ -50,8 +51,21 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       execute :touch, release_path.join('tmp/restart.txt')
+      invoke 'workers:clockwork:restart'
+      invoke 'workers:delayed_job:restart'
     end
   end
+
+  desc 'Stop workers'
+  task :stop_workers do
+    on roles(:app), in: :sequence, wait: 5 do
+      invoke 'workers:clockwork:stop'
+      invoke 'workers:delayed_job:stop'
+    end
+  end
+
+  after :started, :stop_workers
+
 
   after :publishing, :restart
 
