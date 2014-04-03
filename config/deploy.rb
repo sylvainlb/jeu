@@ -31,14 +31,14 @@ set :ssh_options, {
 set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system script}
 
 # Default value for default_env is {}
 #set :default_env, { path: "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH" }
 set :rbenv_type, :user
 set :rbenv_ruby, '1.9.3-p545'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w{rake gem bundle ruby rails clockwork daemon}
+set :rbenv_map_bins, %w{rake gem bundle ruby rails clockworkd daemon}
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
@@ -51,16 +51,16 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       execute :touch, release_path.join('tmp/restart.txt')
-      invoke 'workers:clockwork:restart'
-      invoke 'workers:delayed_job:restart'
+      #invoke 'workers:clockwork:restart'
+      #invoke 'workers:delayed_job:restart'
     end
   end
 
   desc 'Stop workers'
   task :stop_workers do
     on roles(:app), in: :sequence, wait: 5 do
-      invoke 'workers:clockwork:stop'
-      invoke 'workers:delayed_job:stop'
+      #invoke 'workers:clockwork:stop'
+      #invoke 'workers:delayed_job:stop'
     end
   end
 

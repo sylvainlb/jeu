@@ -5,18 +5,7 @@ namespace :workers do
       on roles(:app) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-            execute :clockworkd, '-c lib/clockwork.rb stop'
-          end
-        end
-      end
-    end
-
-    desc "Clockwork status"
-    task :status do
-      on roles(:app) do
-        within release_path do
-          with rails_env: fetch(:rails_env) do
-            execute :daemon, "--inherit --name=clockwork --output=#{cw_log_file} --pidfile=#{cw_pid_file} -D #{current_path} --verbose --running || true"
+            execute :bundle, :exec, :clockworkd, '-c lib/clockwork.rb stop'
           end
         end
       end
@@ -27,7 +16,7 @@ namespace :workers do
       on roles(:app) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-            execute :clockworkd, '-c lib/clockwork.rb start'
+            execute :bundle, :exec, :clockworkd, '-c lib/clockwork.rb start'
           end
         end
       end
@@ -102,3 +91,26 @@ namespace :workers do
 
   end
 end
+
+namespace :deploy do
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      invoke 'workers:clockwork:restart'
+      invoke 'workers:delayed_job:restart'
+    end
+  end
+
+  desc 'Stop workers'
+  task :stop_workers do
+    on roles(:app), in: :sequence, wait: 5 do
+      invoke 'workers:clockwork:stop'
+      invoke 'workers:delayed_job:stop'
+    end
+  end
+
+  after :started, :stop_workers
+end
+
