@@ -10,6 +10,7 @@
 
 <%= yield %>
 
-<%= javascript_include_tag params[:controller] %>
+<%= javascript_include_tag params[:controller] if params[:controller]=='home' %>
+
 </body>
 </html>
