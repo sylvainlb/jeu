@@ -12,6 +12,7 @@ group :production do
   gem 'libv8', platform: :ruby
   gem 'execjs'
   gem 'therubyracer', platform: :ruby
+  gem 'pg'
 end
 
 
