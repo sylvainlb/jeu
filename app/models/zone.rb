@@ -28,16 +28,13 @@ class Zone < ActiveRecord::Base
     id_resource=self.building_type.resource_type_id
     stock=self.stocks.where('resource_type_id = ?', id_resource).first_or_initialize(resource_type_id: id_resource,nb_resource:0)
     next_time=self.next_cycle_time
-    nb_resource_to_product=1
-    #if next_time < 10
-    #  nb_resource_to_product=(10/next_time).round
-    #  next_time=10
-    #end
-    while self.next_production_time < Time.now do
-      self.production_start_time=next_production_time || Time.now
-      self.next_production_time=next_production_time+next_time
-      stock.nb_resource=stock.nb_resource+nb_resource_to_product
-    end
+
+    nb_resource_to_product=(Time.now-production_start_time)/next_time
+
+    self.production_start_time=production_start_time+(next_time*nb_resource_to_product.floor) || Time.now
+    self.next_production_time=production_start_time+next_time
+    stock.nb_resource=stock.nb_resource+nb_resource_to_product
+
     stock.save
     self.save
   end
