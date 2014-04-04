@@ -1,10 +1,10 @@
 class Region < ActiveRecord::Base
-  attr_accessible :name
+
   has_many :zones, :dependent => :destroy
+  belongs_to :user
+  attr_accessible :name, :user_id
 
   after_create :zones_generation
-
-
 
   def zones_generation
     #TODO Balance zones generation

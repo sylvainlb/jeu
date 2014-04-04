@@ -1,14 +1,13 @@
 Jeu::Application.routes.draw do
-  resources :stocks
+  root :to => 'home#index'
 
-
-    root :to => 'home#index'
-
+  resources :users, only: [:index, :show]
   resources :fleets ,defaults: {format: :json}
   resources :transport_routes ,defaults: {format: :json}
   resources :zones ,defaults: {format: :json} do
     resources :stocks ,defaults: {format: :json}
   end
+  resources :stocks
   resources :regions ,defaults: {format: :json} do
     resources :zones ,defaults: {format: :json}
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140331160518) do
+ActiveRecord::Schema.define(:version => 20140404111941) do
 
   create_table "building_types", :force => true do |t|
     t.float    "cycle_time"
@@ -57,7 +57,10 @@ ActiveRecord::Schema.define(:version => 20140331160518) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
+
+  add_index "regions", ["user_id"], :name => "index_regions_on_user_id"
 
   create_table "resource_types", :force => true do |t|
     t.string   "name"
@@ -91,6 +94,12 @@ ActiveRecord::Schema.define(:version => 20140331160518) do
   add_index "transport_routes", ["fleet_id"], :name => "index_transport_routes_on_fleet_id"
   add_index "transport_routes", ["origin_id"], :name => "index_transport_routes_on_origin_id"
   add_index "transport_routes", ["resource_type_id"], :name => "index_transport_routes_on_resource_type_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "vehicle_types", :force => true do |t|
     t.integer  "capacity"
