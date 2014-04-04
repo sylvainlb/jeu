@@ -5,8 +5,18 @@ jQuery.fn.serializeObject = function(){
   });
   return param;
 };
+document.parseCookie = function() {
+  var deserialize = function(obj, elt) {
+    var data = elt.split("=");
+    obj[data[0].trim()] = data[1].trim();
+    return obj
+  }
+  return document.cookie.split(";").reduce(deserialize, {})
+}
 
 window.Jeu = {
+  base_url: '/regions/'+document.parseCookie()["region_id"],
+  
   Models: {},
   Collections: {},
   Views: {},

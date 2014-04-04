@@ -10,7 +10,7 @@ Jeu.Views.FleetView = Backbone.View.extend({
 
     var form = $('#route_form');
     form.on('submit',function(){
-      var newRoute = new Jeu.Models.TransportRoute(form.serializeObject());
+      var newRoute = Jeu.region.get("transportRoutes").create(form.serializeObject());
       newRoute.save().done(function(){
         Jeu.region.get( 'transportRoutes' ).push( newRoute );
         self.selectFleet();

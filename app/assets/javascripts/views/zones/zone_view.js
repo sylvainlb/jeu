@@ -10,7 +10,7 @@ Jeu.Views.ZoneView = Backbone.View.extend({
 
     var form = $('#fleet_form');
     form.on('submit', function(){
-      var newFleet = new Jeu.Models.Fleet( form.serializeObject() );
+      var newFleet = Jeu.region.get("fleets").create( form.serializeObject() );
       newFleet.save().done( function() {
         Jeu.region.get( 'fleets' ).push( newFleet );
         self.selectZone();
