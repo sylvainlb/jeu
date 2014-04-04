@@ -2,7 +2,13 @@ class FleetsController < ApplicationController
   # GET /fleets
   # GET /fleets.json
   def index
-    @fleets = Fleet.all
+    if params[:region_id].nil?
+      @fleets = Fleet.all
+    else
+      @region = Region.includes(:fleets).find(params[:region_id])
+      @fleets = @region.fleets
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb

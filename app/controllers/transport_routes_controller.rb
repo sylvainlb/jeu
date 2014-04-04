@@ -2,7 +2,13 @@ class TransportRoutesController < ApplicationController
   # GET /transport_routes
   # GET /transport_routes.json
   def index
-    @transport_routes = TransportRoute.all
+    if params[:region_id].nil?
+      @transport_routes = TransportRoute.all
+    else
+      @region = Region.includes(:transport_routes).find(params[:region_id])
+      @transport_routes = @region.transport_routes
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb

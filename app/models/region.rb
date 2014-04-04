@@ -1,6 +1,8 @@
 class Region < ActiveRecord::Base
 
   has_many :zones, :dependent => :destroy
+  has_many :fleets, :through => :zones
+  has_many :transport_routes, :through => :fleets
   belongs_to :user
   attr_accessible :name, :user_id
 
