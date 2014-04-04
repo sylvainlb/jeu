@@ -1,12 +1,12 @@
 <div>
   <h2>Bienvenue à <%-building_type%> <%-id%></h2>
   <ul>
-    <li>Population: <%-population%></li>
-    <li>Nourriture:</li>
+    <li>Population: <%-stocks.People%></li>
+    <li>Nourriture:<%-stocks.Food%></li>
     <li>Stocks:
-      <ul><%_.each(stocks, function(stock){%>
-        <li><%-stock.resource_type%>: <%-stock.nb_resource%></li>
-      <%})%></ul>
+      <ul><%for(stock in stocks){%>
+        <li><%-stock%>: <%-stocks[stock]%></li>
+      <%}%></ul>
     </li>
   </ul>
 </div>
@@ -15,15 +15,15 @@
   <ul><%_.each(fleets, function(fleet){%>
     <li><a href="#/fleets/<%-fleet.get("id")%>">Flotte numéro <%-fleet.get("id")%> : <%-fleet.get("nb_vehicle")%> véhicules</a></li>
   <%})%></ul>
-  <!--%if(false){%-->
+  <%if(stocks["Vehicle"]){%>
     <form id="fleet_form" onsubmit="return false">
       <label for="nb_vehicle">Nombre de véhicules</label>
-      <input type="number" name="nb_vehicle" value="1" />
+      <input type="number" name="nb_vehicle" value="<%-stocks["Vehicle"]%>" size="5" />
       <input type="hidden" value="<%-id%>" name="zone_id" />
       <input type="submit" value="Créer" />
     </form>
-  <!--%} else {%-->
+  <%} else {%>
     Pas de véhicules présents pour créer une flotte.
-  <!--%}%-->
+  <%}%>
 </div>
 
