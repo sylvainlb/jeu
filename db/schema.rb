@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140404111941) do
+ActiveRecord::Schema.define(:version => 20140408131054) do
 
   create_table "building_types", :force => true do |t|
     t.float    "cycle_time"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20140404111941) do
     t.string   "icon_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "volume"
   end
 
   create_table "stocks", :force => true do |t|

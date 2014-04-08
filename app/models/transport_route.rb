@@ -9,4 +9,8 @@ class TransportRoute < ActiveRecord::Base
   def name
     origin.id.to_s+' -> '+ destination.id.to_s
   end
+
+  def transported_volume
+    quantity*resource_type.volume
+  end
 end
