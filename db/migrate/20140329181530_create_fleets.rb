@@ -2,7 +2,7 @@ class CreateFleets < ActiveRecord::Migration
   def change
     create_table :fleets do |t|
       t.integer :nb_vehicle
-      t.references :vehicle_type
+      t.string :vehicle_type
       t.references :zone
       t.references :current_route
       t.timestamp :arrival
@@ -10,7 +10,7 @@ class CreateFleets < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :fleets, :vehicle_type_id
+    add_index :fleets, :vehicle_type
     add_index :fleets, :zone_id
     add_index :fleets, :current_route_id
   end

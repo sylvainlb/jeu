@@ -1,0 +1,36 @@
+farm:
+  :output:
+    :prod_time: 1
+    :products:
+    - 'food'
+    - 'morefood'
+  :max_pop: 50
+  :max_food: 120
+sawmill:
+  :output:
+    :prod_time: 1
+    :products:
+    - :resource: 'wood'
+  :max_pop: 50
+  :max_food: 120
+city:
+  :output:
+    :prod_time: 1
+    :products:
+    - :resource: 'population'
+  :max_pop: 50000
+  :max_food: 120000
+iron_mine:
+  :output:
+    :prod_time: 10
+    :products:
+    - :resource: 'iron'
+  :max_pop: 50
+  :max_food: 120
+factory:
+  :output:
+    :prod_time: 100
+    :products:
+    - 'vehicle'
+  :max_pop: 50
+  :max_food: 120

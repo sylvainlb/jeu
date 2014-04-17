@@ -1,5 +1,5 @@
 class Stock < ActiveRecord::Base
+  include Resources
   belongs_to :zone
-  belongs_to :resource_type
-  attr_accessible :nb_resource, :zone_id, :resource_type_id
+  attr_accessible :nb_resource, :zone_id, :resource_type
 end

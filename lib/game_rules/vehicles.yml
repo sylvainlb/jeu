@@ -1,0 +1,3 @@
+vehicle:
+  :cargo: 200 #volume
+  :speed: 1 #in dot/seconds

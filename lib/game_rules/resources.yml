@@ -1,0 +1,18 @@
+#Basic items
+food:
+  :volume: 1
+population:
+  :volume: 1
+
+#Producted items
+wood:
+  :volume: 10
+iron:
+  :volume: 15
+
+#Manufactured items
+vehicle:
+  :volume: 500
+  :ingredients:
+    - resource: 'iron'
+      quantity: 100
