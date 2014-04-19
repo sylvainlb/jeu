@@ -1,3 +1,0 @@
-clockworkd -c lib/clockwork.rb start
-script/delayed_job start
-rails s

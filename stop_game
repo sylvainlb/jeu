@@ -1,2 +1,0 @@
-clockworkd -c lib/clockwork.rb stop
-script/delayed_job stop
