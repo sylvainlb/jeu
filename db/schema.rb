@@ -68,16 +68,16 @@ ActiveRecord::Schema.define(:version => 20140404111941) do
     t.integer  "origin_id"
     t.integer  "destination_id"
     t.integer  "fleet_id"
-    t.integer  "resource_type_id"
+    t.string   "resource_type"
     t.integer  "quantity"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   add_index "transport_routes", ["destination_id"], :name => "index_transport_routes_on_destination_id"
   add_index "transport_routes", ["fleet_id"], :name => "index_transport_routes_on_fleet_id"
   add_index "transport_routes", ["origin_id"], :name => "index_transport_routes_on_origin_id"
-  add_index "transport_routes", ["resource_type_id"], :name => "index_transport_routes_on_resource_type_id"
+  add_index "transport_routes", ["resource_type"], :name => "index_transport_routes_on_resource_type"
 
   create_table "users", :force => true do |t|
     t.string   "name"
