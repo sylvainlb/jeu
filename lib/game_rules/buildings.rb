@@ -17,6 +17,10 @@ module Buildings
       population: 5..20,
       food: 30..60
   }
+  FLEET_START = {
+      fleets: 0..2,
+      vehicles: 0..4
+  }
 
   #Below are methods for class Zone mixins.
   #getters
@@ -50,6 +54,8 @@ module Buildings
     food_city=rand(CITY_START[:food])
     pop_not_city=rand(NOT_CITY_START[:population])
     food_not_city=rand(NOT_CITY_START[:food])
+    nb_fleets=rand(FLEET_START[:fleets])
+    nb_vehicles=rand(FLEET_START[:vehicles])
 
 
     if self.building_type=='city'
@@ -58,6 +64,10 @@ module Buildings
     else
       self.stocks.create(resource_type: 'population', nb_resource: pop_not_city)
       self.stocks.create(resource_type: 'food', nb_resource: food_not_city)
+    end
+
+    nb_fleets.times do
+      self.fleets.create(nb_vehicle: nb_vehicles, vehicle_type:'vehicle')
     end
 
     self.start_production
