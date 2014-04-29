@@ -1,5 +1,6 @@
 Jeu.Views.FleetView = Backbone.View.extend({
   templates: {
+    icon: JST['fleets/icon'],
     menu: JST['fleets/menu'],
   },
   
@@ -17,4 +18,8 @@ Jeu.Views.FleetView = Backbone.View.extend({
       });
     });
   },
+  render: function() {
+    this.el.id = "fleet_"+this.model.get("id");
+    this.$el.html(this.templates['icon'](this.model.toJSON()));
+  }
 });

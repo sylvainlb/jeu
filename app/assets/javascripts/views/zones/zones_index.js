@@ -9,7 +9,6 @@ Jeu.Views.ZonesIndex = Backbone.View.extend({
     this.$el.append(zoneView.el);
   },
   render: function(){
-    this.$el.empty();
     this.collection.each(this.renderZone);
   },
   selectZone: function(id){

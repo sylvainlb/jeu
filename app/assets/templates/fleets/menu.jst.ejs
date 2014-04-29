@@ -15,7 +15,7 @@
       to <%zone=Jeu.region.get("zones").get(route.get("destination_id"))%>
       <%-zone.get("building_type")%> <%-zone.get("id")%>
       with <%-route.get("quantity")%>
-      <%-Jeu.region.get("resourceTypes").get(route.get("resource_type_id")).get("name")%>
+      <%-Jeu.region.get("resourceTypes").get(route.get("resource_type")).get("id")%>
     </li>
   <%})%></ul>
   <form id="route_form" onsubmit="return false">
@@ -37,10 +37,10 @@
         </select></td>
       </tr>
       <tr>
-        <td><label for="resource_type_id">Type de ressource</label></td>
-        <td><select name="resource_type_id">
+        <td><label for="resource_type">Type de ressource</label></td>
+        <td><select name="resource_type">
           <%Jeu.region.get("resourceTypes").each(function(resource){%>
-          <option value="<%-resource.get("id")%>"><%-resource.get("name")%></option>
+          <option value="<%-resource.get("id")%>"><%-resource.get("id")%></option>
           <%})%>
         </select></td>
       </tr>

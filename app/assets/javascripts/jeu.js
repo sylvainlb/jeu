@@ -21,9 +21,14 @@ window.Jeu = {
   Collections: {},
   Views: {},
   Routers: {},
-  drawZones: function() {
+  renderMap: function() {
+    $("#map").empty();
     new Jeu.Views.ZonesIndex({
       collection: Jeu.region.get("zones"), 
+      el: $("#map")
+    }).render();
+    new Jeu.Views.FleetsIndex({
+      collection: Jeu.region.get("fleets"), 
       el: $("#map")
     }).render();
   },
@@ -47,7 +52,7 @@ window.Jeu = {
     new this.Routers.Fleets;
 
     $.when(zones.fetch(), fleets.fetch(), transportRoutes.fetch(), resourceTypes.fetch()).done(function() {
-        Jeu.drawZones();
+        Jeu.renderMap();
         Backbone.history.start();
     });
   }

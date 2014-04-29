@@ -73,7 +73,7 @@ $margin: 10px;
   &.zone-sawmill{
     background-image: url(sawmill.png);
   }
-  &.zone-iron-mine{
+  &.zone-iron_mine{
     background-image: url(iron-mine.png);
   }
   &.zone-farm{
@@ -85,6 +85,20 @@ $margin: 10px;
   &.zone-factory{
     background-image: url(factory.png);
   }
+}
+
+.fleet {
+  $size: 10px;
+  background:#77f;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width:$size;
+  height:$size;
+  position:absolute;
+  margin-left:-$size/2;
+  margin-top:-$size/2;
+  box-shadow: 0 0 3px red inset;
+  z-index: 1;
 }
 
 .screen {
