@@ -17,12 +17,13 @@ class Zone < ActiveRecord::Base
 
   after_create :stock_generation
 
-  def stocks_of(resource)
-    stocks.where(resource_type: resource).sum(:nb_resource)
-  end
 
   def next_cycle_time #not in the rules because needs population or whatever
     self.prod_time*stocks_of('population')/(max_pop/2) # with a bonus/malus for population
+  end
+
+  def stocks_of(resource)
+    stocks.where(resource_type: resource).first.nb_resource
   end
 
   def starve!

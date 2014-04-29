@@ -13,9 +13,9 @@ Jeu::Application.routes.draw do
     resources :fleets, defaults: {format: :json}
     resources :transport_routes, defaults: {format: :json}
   end
-  resources :resource_types ,defaults: {format: :json}
-  resources :building_types ,defaults: {format: :json}
-  resources :vehicle_types ,defaults: {format: :json}
+  resources :resource_types, only: [:index], defaults: {format: :json}
+  resources :building_types, only: [:index], defaults: {format: :json}
+  resources :vehicle_types, only: [:index], defaults: {format: :json}
 
 
 

@@ -1,9 +1,10 @@
 class TransportRoute < ActiveRecord::Base
+  include Resources
   belongs_to :origin, class_name: Zone
   belongs_to :destination, class_name: Zone
   belongs_to :fleet
-  belongs_to :resource_type
-  attr_accessible :quantity, :origin_id, :destination_id, :fleet_id, :resource_type_id
+
+  attr_accessible :quantity, :origin_id, :destination_id, :fleet_id, :resource_type
   attr_accessor :name
 
   def name
@@ -11,6 +12,6 @@ class TransportRoute < ActiveRecord::Base
   end
 
   def transported_volume
-    quantity*resource_type.volume
+    quantity*volume
   end
 end

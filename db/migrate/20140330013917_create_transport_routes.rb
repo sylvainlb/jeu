@@ -4,7 +4,7 @@ class CreateTransportRoutes < ActiveRecord::Migration
       t.references :origin
       t.references :destination
       t.references :fleet
-      t.references :resource_type
+      t.string :resource_type
       t.integer :quantity
 
       t.timestamps
@@ -12,6 +12,6 @@ class CreateTransportRoutes < ActiveRecord::Migration
     add_index :transport_routes, :origin_id
     add_index :transport_routes, :destination_id
     add_index :transport_routes, :fleet_id
-    add_index :transport_routes, :resource_type_id
+    add_index :transport_routes, :resource_type
   end
 end
