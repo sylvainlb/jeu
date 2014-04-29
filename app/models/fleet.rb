@@ -1,4 +1,5 @@
 class Fleet < ActiveRecord::Base
+  include Vehicles
   belongs_to :zone
   belongs_to :current_route, :class_name => TransportRoute
   has_many :transport_routes, :dependent => :destroy
