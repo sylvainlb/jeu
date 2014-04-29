@@ -1,7 +1,7 @@
 class ResourceTypesController < ApplicationController
   def index
     @resource_types=Resources::RESOURCES.map do |resname,properties|
-      Hash[:name,resname].merge!(properties)
+      Hash[:id,resname].merge!(properties)
     end
 
     respond_to do |format|

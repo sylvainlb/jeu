@@ -1,8 +1,8 @@
-<div>
+<div class="screen">
   <h2>Bienvenue à <%-building_type%> <%-id%></h2>
   <ul>
-    <li>Population: <%-stocks.People%></li>
-    <li>Nourriture:<%-stocks.Food%></li>
+    <li>Population: <%-stocks.population%></li>
+    <li>Nourriture:<%-stocks.food%></li>
     <li>Stocks:
       <ul><%for(stock in stocks){%>
         <li><%-stock%>: <%-stocks[stock]%></li>

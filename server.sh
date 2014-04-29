@@ -3,7 +3,7 @@ start_server() {
     echo "Starting game..."
     clockworkd -c lib/clockwork.rb start
     script/delayed_job start
-    rails s -d
+    rails s
     echo "."
 }
 stop_server() {

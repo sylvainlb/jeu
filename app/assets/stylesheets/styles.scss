@@ -70,19 +70,27 @@ $margin: 10px;
     transform: scale(1.5);
     z-index: 1;
   }
-  &.zone-1{
+  &.zone-sawmill{
     background-image: url(sawmill.png);
   }
-  &.zone-2{
+  &.zone-iron-mine{
     background-image: url(iron-mine.png);
   }
-  &.zone-3{
+  &.zone-farm{
     background-image: url(field.png);
   }
-  &.zone-4{
+  &.zone-city{
     background-image: url(city.png);
   }
-  &.zone-5{
+  &.zone-factory{
     background-image: url(factory.png);
+  }
+}
+
+.screen {
+  background-image: url(screen.png);
+  height: 300px;
+  >h2 {
+    color: black;
   }
 }
