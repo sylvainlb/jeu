@@ -23,6 +23,10 @@ window.Jeu = {
   Routers: {},
   renderMap: function() {
     $("#map").empty();
+    $('<canvas/>', {id: 'canvas',}).appendTo('#map');
+    Jeu.ctx = document.getElementById("canvas").getContext("2d");
+    Jeu.ctx.canvas.height=1000;
+    Jeu.ctx.canvas.width=1000;
     new Jeu.Views.ZonesIndex({
       collection: Jeu.region.get("zones"), 
       el: $("#map")
