@@ -32,17 +32,17 @@ ActiveRecord::Schema.define(:version => 20140404111941) do
   create_table "fleets", :force => true do |t|
     t.integer  "nb_vehicle"
     t.string   "vehicle_type"
+    t.integer  "departure_zone_id"
     t.integer  "zone_id"
     t.integer  "current_route_id"
     t.datetime "arrival"
     t.datetime "departure"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   add_index "fleets", ["current_route_id"], :name => "index_fleets_on_current_route_id"
   add_index "fleets", ["vehicle_type"], :name => "index_fleets_on_vehicle_type"
-  add_index "fleets", ["zone_id"], :name => "index_fleets_on_zone_id"
 
   create_table "regions", :force => true do |t|
     t.string   "name"
@@ -65,19 +65,17 @@ ActiveRecord::Schema.define(:version => 20140404111941) do
   add_index "stocks", ["zone_id"], :name => "index_stocks_on_zone_id"
 
   create_table "transport_routes", :force => true do |t|
-    t.integer  "origin_id"
+    t.integer  "action_order"
     t.integer  "destination_id"
     t.integer  "fleet_id"
     t.string   "resource_type"
     t.integer  "quantity"
+    t.integer  "next_route_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
 
-  add_index "transport_routes", ["destination_id"], :name => "index_transport_routes_on_destination_id"
   add_index "transport_routes", ["fleet_id"], :name => "index_transport_routes_on_fleet_id"
-  add_index "transport_routes", ["origin_id"], :name => "index_transport_routes_on_origin_id"
-  add_index "transport_routes", ["resource_type"], :name => "index_transport_routes_on_resource_type"
 
   create_table "users", :force => true do |t|
     t.string   "name"
