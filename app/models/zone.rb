@@ -17,7 +17,6 @@ class Zone < ActiveRecord::Base
 
   after_create :stock_generation
 
-
   def next_cycle_time #not in the rules because needs population or whatever
     self.prod_time*stocks_of('population')/(max_pop/2) # with a bonus/malus for population
   end
@@ -43,34 +42,34 @@ class Zone < ActiveRecord::Base
   end
 
   def population_eat_food! #Using the consumption rate FOOD_RATE
-    puts("zone id : #{self.id}")
+    # puts("zone id : #{self.id}")
     interval= Time.now-self.last_food_time
-    puts("interval : #{interval}")
+    # puts("interval : #{interval}")
     population=stocks_of('population')
     eaten_food=population*food_rate*interval
-    puts("Eaten food : #{eaten_food}")
+    # puts("Eaten food : #{eaten_food}")
     foods=stocks_of('food')
-    puts("stocks foods : #{foods}")
+    # puts("stocks foods : #{foods}")
 
     if !starving_start_time.nil?
       #do NOTHING, people are starving
-      puts('starving already')
+      # puts('starving already')
     elsif eaten_food >= foods
-      puts('missing food')
+      # puts('missing food')
       starv_interval=(eaten_food-foods)/(self.food_rate*population)
-      puts("starv interval : #{starv_interval}")
+      # puts("starv interval : #{starv_interval}")
       starv_delay=interval*foods/eaten_food
-      puts("starv_delay: #{starv_delay}")
+      # puts("starv_delay: #{starv_delay}")
       self.starving_start_time = last_food_time+starv_delay
       self.last_food_time = starving_start_time
       food_stocks=stocks.where('resource_type = ?','food')
       food_stocks.update_all(nb_resource:0)
       self.save
     else
-      puts('enough food')
+      # puts('enough food')
       food_stock=stocks.where('resource_type = ?', 'food').first
       new_food=foods-eaten_food
-      puts("new food : #{new_food}")
+      # puts("new food : #{new_food}")
       food_stock.update_attributes(nb_resource:new_food)
       self.last_food_time=Time.now
       self.starving_start_time=nil
@@ -102,6 +101,10 @@ class Zone < ActiveRecord::Base
 
   def distance_coord(x,y)
     Math.sqrt((coordX-x)**2 + (coordY-y)**2 )
+  end
+
+  def distance_zone(other_zone)
+    Math.sqrt((coordX-other_zone.coordX)**2 + (coordY-other_zone.coordY)**2 )
   end
 
   def square_radius

@@ -9,14 +9,16 @@ class TransportRoute < ActiveRecord::Base
 
   validates :destination_id, :fleet_id, :action_order, :resource_type, :presence => true
 
+  validates :action_order, uniqueness: { scope: :fleet_id}
+
   before_validation :assign_order
 
   def assign_order
-    last_order=TransportRoute.select(:action_order).where(:fleet_id => self.fleet_id).order(:action_order).last.action_order
+    last_order=TransportRoute.select(:action_order).where(:fleet_id => self.fleet_id).order(:action_order).last
     if last_order.nil?
       self.action_order=1
     else
-      self.action_order=last_order+1
+      self.action_order=last_order.action_order+1
     end
   end
 

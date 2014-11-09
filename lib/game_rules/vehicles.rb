@@ -4,10 +4,10 @@ module Vehicles
 
 
   def cargo
-    VEHICLES[vehicle_type][cargo]
+    VEHICLES[vehicle_type][:cargo]
   end
 
   def speed
-    VEHICLES[vehicle_type][speed]
+    VEHICLES[vehicle_type][:speed]
   end
 end

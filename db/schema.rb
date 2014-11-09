@@ -55,12 +55,14 @@ ActiveRecord::Schema.define(:version => 20140404111941) do
 
   create_table "stocks", :force => true do |t|
     t.integer  "zone_id"
+    t.integer  "fleet_id"
     t.string   "resource_type"
     t.integer  "nb_resource"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
+  add_index "stocks", ["fleet_id"], :name => "index_stocks_on_fleet_id"
   add_index "stocks", ["resource_type"], :name => "index_stocks_on_resource_type"
   add_index "stocks", ["zone_id"], :name => "index_stocks_on_zone_id"
 

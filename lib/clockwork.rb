@@ -5,5 +5,6 @@ require 'clockwork'
 include Clockwork
 
 #every(10.seconds, 'Queuing stocks update') { Delayed::Job.enqueue StocksJob.new, :queue => 'stocking' }
-every(20.seconds, 'Queuing Starving population') { Delayed::Job.enqueue StarvationJob.new, :queue => 'starving' }
-every(20.seconds, 'Queuing Eating population'){ Delayed::Job.enqueue EatingJob.new, :queue => 'eating' }
+#every(20.seconds, 'Queuing Starving population') { Delayed::Job.enqueue StarvationJob.new, :queue => 'starving' }
+#every(20.seconds, 'Queuing Eating population'){ Delayed::Job.enqueue EatingJob.new, :queue => 'eating' }
+every(5.seconds, 'Queuing Fleets arrival'){ Delayed::Job.enqueue TransportJob.new, :queue => 'arriving' }
