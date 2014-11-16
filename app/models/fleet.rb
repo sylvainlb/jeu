@@ -1,16 +1,17 @@
 class Fleet < ActiveRecord::Base
   include Vehicles
   belongs_to :zone
+  belongs_to :region
   belongs_to :departure_zone, :class_name => Zone
   belongs_to :current_route, :class_name => TransportRoute
   has_many :transport_routes, :dependent => :destroy, :order => 'action_order'
   has_many :stocks, :dependent => :destroy
 
-  attr_accessible :nb_vehicle, :vehicle_type, :zone_id, :departure_zone_id, :departure, :arrival, :current_route_id
+ attr_accessible :nb_vehicle, :vehicle_type, :zone_id, :region_id, :departure_zone_id, :departure, :arrival, :current_route_id
 
   attr_accessor :max_volume
 
-  validates :nb_vehicle, :vehicle_type, presence: true
+  validates :nb_vehicle, :vehicle_type, :region_id, presence: true
 
   def max_volume
     nb_vehicle*cargo
@@ -100,10 +101,12 @@ first_route
       self.current_route=next_route
       self.zone=nil
       self.save
+      true
     else
       self.current_route=nil
       self.departure_zone=nil
       self.save
+      false
     end
 
   end

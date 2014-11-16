@@ -3,7 +3,14 @@
   <h2>Flotte numéro <%-id%></h2>
   <ul>
     <li><%-nb_vehicle%> véhicules </li>
+    <% if(zone_id) {%>
     <li>stationné à <%-Jeu.region.get("zones").get(zone_id).get("building_type")%> <%-zone_id%></li>
+    <% } else { 
+      var destid = Jeu.region.get("transportRoutes").get(current_route_id).get("destination_id");
+      %>
+    <li>en route vers <%-Jeu.region.get("zones").get(destid).get("building_type")%> <%-destid%></li>
+    (<%-coordX%>,<%-coordY%>)
+    <% } %>
   </ul>
 </div>
 <div>
@@ -42,4 +49,6 @@
     <input type="hidden" value="<%-id%>" name="fleet_id" />
     <input type="submit" value="Ajouter" />
   </form>
+  <!new Jeu.Views.FleetView({el:el, model:self}).render()">
+  <button onclick="$.ajax('/fleets/<%-id%>/start_routes.json', {'type': 'POST'})"> Lancer!</button>
 </div>

@@ -67,7 +67,7 @@ module Buildings
     end
 
     nb_fleets.times do
-      self.fleets.create(nb_vehicle: nb_vehicles, vehicle_type:'vehicle')
+      self.fleets.create(nb_vehicle: nb_vehicles, vehicle_type:'vehicle', region_id: self.region_id)
     end
 
     self.start_production

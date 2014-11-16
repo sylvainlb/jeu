@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20140404111941) do
     t.string   "vehicle_type"
     t.integer  "departure_zone_id"
     t.integer  "zone_id"
+    t.integer  "region_id"
     t.integer  "current_route_id"
     t.datetime "arrival"
     t.datetime "departure"
@@ -42,7 +43,9 @@ ActiveRecord::Schema.define(:version => 20140404111941) do
   end
 
   add_index "fleets", ["current_route_id"], :name => "index_fleets_on_current_route_id"
+  add_index "fleets", ["region_id"], :name => "index_fleets_on_region_id"
   add_index "fleets", ["vehicle_type"], :name => "index_fleets_on_vehicle_type"
+  add_index "fleets", ["zone_id"], :name => "index_fleets_on_zone_id"
 
   create_table "regions", :force => true do |t|
     t.string   "name"

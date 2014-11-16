@@ -1,5 +1,1 @@
-<%
-  var coordX = Jeu.region.get("zones").get(zone_id).get("coordX");
-  var coordY = Jeu.region.get("zones").get(zone_id).get("coordY");
-%>
-<a href="#/fleets/<%-id%>"><div class="fleet" style="top:<%-coordY%>px;left:<%-coordX%>px"></div></a>
+<a href="#/fleets/<%-id%>"><div class="fleet <%-state%>" style="top:<%-coordY%>px;left:<%-coordX%>px"></div></a>

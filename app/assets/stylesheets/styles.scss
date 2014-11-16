@@ -89,7 +89,6 @@ $margin: 10px;
 
 .fleet {
   $size: 10px;
-  background:#77f;
   background-size: cover;
   background-repeat: no-repeat;
   width:$size;
@@ -99,6 +98,13 @@ $margin: 10px;
   margin-top:-$size/2;
   box-shadow: 0 0 3px red inset;
   z-index: 1;
+}
+.stationed {
+  background:#77f;
+}
+.moving {
+  background:#4C2;
+
 }
 
 .screen {

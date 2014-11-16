@@ -16,6 +16,8 @@ Jeu::Application.routes.draw do
   resources :resource_types, only: [:index], defaults: {format: :json}
   resources :building_types, only: [:index], defaults: {format: :json}
   resources :vehicle_types, only: [:index], defaults: {format: :json}
+  
+  match 'fleets/:id/start_routes' => 'fleets#start_routes', :as => :start_routes
 
 
 
