@@ -10,8 +10,6 @@
   <h3>Routes</h3>
   <ul><%_.each(transportRoutes, function(route){%>
     <li>
-      from <%zone=Jeu.region.get("zones").get(route.get("origin_id"))%>
-      <%-zone.get("building_type")%> <%-zone.get("id")%>
       to <%zone=Jeu.region.get("zones").get(route.get("destination_id"))%>
       <%-zone.get("building_type")%> <%-zone.get("id")%>
       with <%-route.get("quantity")%>
@@ -20,14 +18,6 @@
   <%})%></ul>
   <form id="route_form" onsubmit="return false">
     <table>
-      <tr>
-        <td><label for="origin_id">Origine</label></td>
-        <td><select name="origin_id">
-          <%Jeu.region.get("zones").each(function(zone){%>
-          <option value="<%-zone.get("id")%>"><%-zone.get("building_type")%> <%-zone.get("id")%></option>
-          <%})%>
-        </select></td>
-      </tr>
       <tr>
         <td><label for="destination_id">Destination</label></td>
         <td><select name="destination_id">

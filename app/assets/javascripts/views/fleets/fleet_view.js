@@ -9,14 +9,15 @@ Jeu.Views.FleetView = Backbone.View.extend({
     
     $("#panel").html(this.templates['menu'](this.model.toJSON()));
     
+    var origin = Jeu.region.get("zones").get(this.model.get("zone_id"));
     //Draw routes
     _.each(Jeu.region.get("transportRoutes").where({fleet_id:this.model.get("id")}), function drawRoute(route){
-      var origin = Jeu.region.get("zones").get(route.get("origin_id"));
       var destination = Jeu.region.get("zones").get(route.get("destination_id"));
       Jeu.ctx.beginPath();
       Jeu.ctx.moveTo(origin.get("coordX"), origin.get("coordY"));
       Jeu.ctx.lineTo(destination.get("coordX"), destination.get("coordY"));
       Jeu.ctx.stroke();
+      origin = destination;
     });
 
     //Event for route creation
