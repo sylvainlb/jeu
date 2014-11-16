@@ -9,7 +9,6 @@
       var destid = Jeu.region.get("transportRoutes").get(current_route_id).get("destination_id");
       %>
     <li>en route vers <%-Jeu.region.get("zones").get(destid).get("building_type")%> <%-destid%></li>
-    (<%-coordX%>,<%-coordY%>)
     <% } %>
   </ul>
 </div>
