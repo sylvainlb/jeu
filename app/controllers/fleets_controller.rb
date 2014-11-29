@@ -48,6 +48,12 @@ class FleetsController < ApplicationController
   def create
     @fleet = Fleet.new(params[:fleet])
 
+    if @fleet.zone.stocks_of("vehicle") >= @fleet.nb_vehicle
+      vehicle_stock = @fleet.zone.stocks.where('resource_type = ?', 'vehicle')
+      vehicle_stock.update_all(nb_resource: @fleet.zone.stocks_of("vehicle") - @fleet.nb_vehicle)
+    else
+      return head 422
+    end
     respond_to do |format|
       if @fleet.save
         format.html { redirect_to @fleet, notice: 'Fleet was successfully created.' }

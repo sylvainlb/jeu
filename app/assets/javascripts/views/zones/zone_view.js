@@ -5,8 +5,8 @@ Jeu.Views.ZoneView = Backbone.View.extend({
   },
   selectZone: function() {
     var self = this;
-
-    $("#panel").html( this.templates['menu'] ( this.model.toJSON() ) );
+    self.model.fetch();
+    $("#panel").html( this.templates['menu'](this.model.toJSON()) );
 
     var form = $('#fleet_form');
     form.on('submit', function(){
@@ -15,7 +15,7 @@ Jeu.Views.ZoneView = Backbone.View.extend({
         self.selectZone();
       }});
     });
-    
+
     $('.zone.active').removeClass('active');
     this.$el.find('.zone').addClass('active');
   },
