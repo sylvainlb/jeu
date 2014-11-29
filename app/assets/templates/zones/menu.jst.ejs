@@ -15,11 +15,13 @@
   <ul><%_.each(fleets, function(fleet){%>
     <li><a href="#/fleets/<%-fleet.get("id")%>">Flotte numéro <%-fleet.get("id")%> : <%-fleet.get("nb_vehicle")%> véhicules</a></li>
   <%})%></ul>
-  <%if(stocks["Vehicle"]){%>
+  <%if(stocks["vehicle"]){%>
     <form id="fleet_form" onsubmit="return false">
       <label for="nb_vehicle">Nombre de véhicules</label>
-      <input type="number" name="nb_vehicle" value="<%-stocks["Vehicle"]%>" size="5" />
+      <input type="number" name="nb_vehicle" value="<%-stocks['vehicle']%>" size="5" />
       <input type="hidden" value="<%-id%>" name="zone_id" />
+      <input type="hidden" value="<%-Jeu.region.id%>" name="region_id" />
+      <input type="hidden" value="vehicle" name="vehicle_type" />
       <input type="submit" value="Créer" />
     </form>
   <%} else {%>

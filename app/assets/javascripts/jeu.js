@@ -39,6 +39,7 @@ window.Jeu = {
   
   initialize: function() {
     this.region = new this.Models.Region();
+    this.region.id = document.parseCookie()["region_id"];
     
     var zones = new this.Collections.Zones();
     var transportRoutes = new this.Collections.TransportRoutes();

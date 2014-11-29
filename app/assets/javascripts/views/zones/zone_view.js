@@ -10,13 +10,12 @@ Jeu.Views.ZoneView = Backbone.View.extend({
 
     var form = $('#fleet_form');
     form.on('submit', function(){
-      var newFleet = Jeu.region.get("fleets").create( form.serializeObject() );
-      newFleet.save().done( function() {
+      var newFleet = Jeu.region.get("fleets").create( form.serializeObject(), {success: function() {
         Jeu.region.get( 'fleets' ).push( newFleet );
         self.selectZone();
-      });
+      }});
     });
-
+    
     $('.zone.active').removeClass('active');
     this.$el.find('.zone').addClass('active');
   },
