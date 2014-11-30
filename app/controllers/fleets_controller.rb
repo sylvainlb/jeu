@@ -68,7 +68,7 @@ class FleetsController < ApplicationController
   # POST /fleets/1/start_routes
   # POST /fleets/1/start_routes.json
   def start_routes
-    @fleet = Fleet.new(params[:fleet])
+    @fleet = Fleet.find(params[:id])
     result = @fleet.start_routes
     respond_to do |format|
       format.json  { render :json => {:result => result} }
