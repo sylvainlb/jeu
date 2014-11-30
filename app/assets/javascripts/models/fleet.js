@@ -1,11 +1,17 @@
 Jeu.Models.Fleet = Backbone.Model.extend({
   toJSON: function() {
+    var self = this;
     var attr = Backbone.Model.prototype.toJSON.call(this);
     attr.transportRoutes = Jeu.region.get("transportRoutes").where({fleet_id:this.id});
     
     //Check if the route is over
-    if(this.get("arrival") && new Date() > new Date(this.get("arrival")))
+    if(this.get("arrival") && new Date() > new Date(this.get("arrival"))) {
       this.set("zone_id", Jeu.region.get("transportRoutes").get(this.get("current_route_id")).get("destination_id"));
+      //check in 10 seconds if the fleet has left again
+      setTimeout(function(){self.fetch({success: function(){
+          new Jeu.Views.FleetView({el:el, model:self}).render();
+        }})}, 10000);
+    }
     
     if(this.get("zone_id")) {
       //Get coorindates for stationed fleet
@@ -26,8 +32,7 @@ Jeu.Models.Fleet = Backbone.Model.extend({
       
       //Update position in 1 second
       var el = $("#fleet_"+this.id)[0];
-      var self = this;
-      setTimeout(function(){new Jeu.Views.FleetView({el:el, model:self}).render()}, 1000)
+      setTimeout(function(){new Jeu.Views.FleetView({el:el, model:self}).render()}, 1000);
     }
     return attr;
   }
