@@ -5,19 +5,20 @@ Jeu.Views.ZoneView = Backbone.View.extend({
   },
   selectZone: function() {
     var self = this;
-    self.model.fetch();
-    $("#panel").html( this.templates['menu'](this.model.toJSON()) );
+    self.model.fetch({success: function(){
+      $("#panel").html( self.templates['menu'](self.model.toJSON()) );
 
-    var form = $('#fleet_form');
-    form.on('submit', function(){
-      var newFleet = Jeu.region.get("fleets").create( form.serializeObject(), {success: function() {
-        Jeu.region.get( 'fleets' ).push( newFleet );
-        self.selectZone();
-      }});
-    });
+      var form = $('#fleet_form');
+      form.on('submit', function(){
+        var newFleet = Jeu.region.get("fleets").create( form.serializeObject(), {success: function() {
+          Jeu.region.get( 'fleets' ).push( newFleet );
+          self.selectZone();
+        }, error: function() {alert('erreur !');}});
+      });
 
-    $('.zone.active').removeClass('active');
-    this.$el.find('.zone').addClass('active');
+      $('.zone.active').removeClass('active');
+      self.$el.find('.zone').addClass('active');
+    }});
   },
   render: function() {
     this.el.id = "zone_"+this.model.get("id");
